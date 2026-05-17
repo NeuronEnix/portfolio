@@ -1,0 +1,11 @@
+name = "portfolio"
+compatibility_date = "2025-05-01"
+
+routes = [
+  { pattern = "kaushikrb.com", custom_domain = true },
+  { pattern = "www.kaushikrb.com", custom_domain = true },
+]
+
+[assets]
+directory = "./src"
+not_found_handling = "single-page-application"
