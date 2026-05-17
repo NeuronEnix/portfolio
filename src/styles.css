@@ -479,10 +479,19 @@ main {
   font-size: 14px;
 }
 
-/* Contact */
-.section-contact {
-  padding-bottom: 80px;
+/* Company links in experience */
+.company-link {
+  color: var(--text-dim);
+  border-bottom: 1px dashed var(--border-strong);
+  padding-bottom: 1px;
+  transition: color 0.15s ease, border-color 0.15s ease;
 }
+.company-link:hover {
+  color: var(--accent);
+  border-bottom-color: var(--accent);
+}
+
+/* Contact */
 .contact-lede {
   color: var(--text-dim);
   font-size: 16.5px;
@@ -495,10 +504,12 @@ main {
   gap: 12px;
 }
 .contact-item {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 4px;
   padding: 18px 20px;
+  padding-right: 78px;
   background: var(--bg-card);
   border: 1px solid var(--border);
   border-radius: var(--radius);
@@ -510,6 +521,87 @@ main {
   border-color: var(--accent);
   transform: translateY(-2px);
   color: var(--text);
+}
+
+/* Copy button */
+.copy-btn {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 9px;
+  font-family: var(--mono);
+  font-size: 11px;
+  font-weight: 500;
+  color: var(--text-muted);
+  background: var(--bg-elev);
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s ease, color 0.15s ease,
+    border-color 0.15s ease, background 0.15s ease, transform 0.18s ease;
+}
+.contact-item:hover .copy-btn,
+.copy-btn:focus-visible {
+  opacity: 1;
+}
+.copy-btn:hover {
+  color: var(--text);
+  border-color: var(--border-strong);
+}
+.copy-btn:focus-visible {
+  outline: none;
+  border-color: var(--accent);
+  color: var(--text);
+}
+.copy-btn-icon {
+  position: relative;
+  display: inline-flex;
+  width: 13px;
+  height: 13px;
+}
+.copy-btn-icon svg {
+  position: absolute;
+  inset: 0;
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+.copy-btn-check {
+  opacity: 0;
+  transform: scale(0.4);
+}
+.copy-btn.copied {
+  color: var(--accent);
+  border-color: var(--accent);
+  background: rgba(124, 240, 168, 0.1);
+  opacity: 1;
+  animation: copy-pop 0.42s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+.copy-btn.copied .copy-btn-icon svg:not(.copy-btn-check) {
+  opacity: 0;
+  transform: scale(0.4);
+}
+.copy-btn.copied .copy-btn-check {
+  opacity: 1;
+  transform: scale(1);
+}
+@keyframes copy-pop {
+  0% {
+    transform: scale(1);
+  }
+  45% {
+    transform: scale(1.12);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@media (max-width: 520px) {
+  .contact-item {
+    padding-right: 72px;
+  }
 }
 .contact-label {
   font-family: var(--mono);
