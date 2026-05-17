@@ -19,6 +19,16 @@ export default {
       });
     }
 
+    if (isTest && url.pathname === "/sitemap.xml") {
+      return new Response("Not Found", {
+        status: 404,
+        headers: {
+          "content-type": "text/plain; charset=utf-8",
+          ...NOINDEX_HEADERS,
+        },
+      });
+    }
+
     const response = await env.ASSETS.fetch(request);
 
     if (!isTest) return response;
