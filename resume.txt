@@ -1,0 +1,42 @@
+Kaushik R Bangera
+Senior Backend Engineer | Distributed Systems | Real-Time System |  AWS
+kaushikrb909@gmail.com | +91 9731176618
+GitHub | LinkedIn
+SUMMARY
+Senior backend engineer with 4+ years of experience building high-scale, real-time gaming systems and cloud-native infrastructure on AWS. Proven in scaling production traffic to ~600K requests/min, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through strong observability and incident ownership. Strong in system design, performance optimization, and execution leadership in fast-paced environments.
+TECHNICAL SKILLS
+Languages: TypeScript, JavaScript, Python, SQL, Go
+Backend: Node.js, REST APIs, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, ETL
+Databases: PostgreSQL (RDS/Aurora), MySQL (Aurora), ClickHouse, MongoDB, Redis
+AWS: Lambda, EC2, EKS, S3, API Gateway, Kinesis, Firehose, Step Functions, Glue, Athena, SQS, Cognito, CloudWatch, Amazon Personalize
+DevOps & Tools: Docker, Kubernetes, Terraform(IaC), NGINX, Git, Airflow, CI/CD, Percona Monitoring, Tailscale
+EXPERIENCE
+Jumbo — New Delhi - Founding Engineer (Senior Backend Engineer)
+Aug 2024 – Present
+Scaled the gaming platform to ~600,000 requests/min, reliably handling ₹5 Cr peak payment throughput and 30 Cr+ in-game transaction volume
+Rewrote the core transaction service in Go + gRPC, reducing latency to single-digit ms while ensuring financial correctness through atomicity, idempotency, running balances, and integer-based currency normalization to eliminate float drift; also built reliable user-attribute fanout pipelines for analytics/event platforms using TDD and spec-driven development with AI-assisted validation.
+Owned the end-to-end system architecture for the in-house fantasy platform, defining service boundaries, database schema, and API contracts for scalable delivery.
+Reduced backend load by ~50% by moving low-change/high-read APIs behind CDN, implementing correct cache-control and invalidation strategy.
+Delivered an async recharge + KYC orchestration layer using a vendor-agnostic Adapter Pattern, reducing third-party dependency cost by ~70% through caching and retries.
+Developed real-time infrastructure including Redis + ClickHouse event aggregation/distribution and a scalable WebSocket platform (API Gateway + Redis) for connection state, channel broadcasts, and WebSocket-based API calls.
+Built centralized logging + trace correlation (ClickHouse + Redis) using Node.js async_hooks, reducing MTTR and surfacing performance bottlenecks across services.
+Improved tail latency and peak resilience through API + DB bottleneck analysis and load testing using Locust, Percona, and ClickHouse.
+Modernized AWS infrastructure and security using AWS Organizations, CI/CD pipelines, and IAM Identity Center RBAC, securing internal access via Tailscale and enforcing least-privilege operations.
+Strengthened system integrity with OTP abuse prevention and multi-device concurrency conflict handling for account safety and reliability.
+Served as the primary escalation owner for production incidents, leading debugging, incident resolution, and release execution while unblocking the team.
+Built an Aviator game from scratch and scaled it to ~1,000 CCU, improving engagement through stable gameplay loops and production hardening.
+Improved engineering velocity by using AI-assisted tooling and MCP database workflows for faster debugging, system insights, and architecture validation.
+Juego Studios — Mangalore - Software Engineer (Backend / Cloud)
+Aug 2021 – Jan 2024
+Built a resilient AWS ingestion platform using Kinesis, reducing projected infrastructure cost by ~66% while improving throughput and reliability.
+Delivered end-to-end analytics pipelines using AWS Glue ETL + Glue Catalog + Athena, reducing query latency from ~7s → 1–2s and enabling structured datasets.
+Improved database scalability using Aurora MySQL tuning, SQL transactions, indexing, and Redis caching, achieving ~1,000 CCU and 1,000 RPS.
+Provisioned and maintained cloud infrastructure using Terraform (IaC), enabling reproducible deployments and consistent environments.
+Deployed and managed multiplayer game servers on Kubernetes, integrating Agones as a PoC for dedicated server scaling.
+Implemented secure authentication including M2M architecture and JWT access/refresh token flows for service-to-service and client auth.
+Built internal cost-optimization tooling including Lambda memory benchmarking and replacing NAT Gateway with EC2 NAT, reducing recurring AWS cost.
+Integrated secure wallet authentication flows using Metamask and Keplr for Web3 gaming features.
+Mentored engineers and collaborated across gameplay, frontend, CMS, and game design teams.
+EDUCATION
+Srinivas Institute of Technology, Mangalore
+B.E. Computer Science Engineering (2021)
