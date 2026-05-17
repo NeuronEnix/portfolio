@@ -4,8 +4,10 @@
   "private": true,
   "description": "Kaushik R Bangera — portfolio site, deployed to Cloudflare Workers (static assets).",
   "scripts": {
-    "dev": "wrangler dev",
-    "deploy": "wrangler deploy"
+    "dev": "wrangler dev --env=\"\"",
+    "dev:test": "wrangler dev --env test",
+    "deploy": "wrangler deploy --env=\"\"",
+    "deploy:test": "wrangler deploy --env test"
   },
   "devDependencies": {
     "wrangler": "^3.90.0"

@@ -1,4 +1,5 @@
 name = "portfolio"
+main = "worker/index.js"
 compatibility_date = "2025-05-01"
 
 routes = [
@@ -6,6 +7,30 @@ routes = [
   { pattern = "www.kaushikrb.com", custom_domain = true },
 ]
 
+[vars]
+ENVIRONMENT = "production"
+
 [assets]
 directory = "./src"
+binding = "ASSETS"
 not_found_handling = "single-page-application"
+run_worker_first = true
+
+# ── Test environment ──────────────────────────────────────────────────
+# Deploys the same site under test.kaushikrb.com. The Worker injects
+# X-Robots-Tag: noindex headers and serves a Disallow-all robots.txt so
+# search engines do not index the test deployment.
+[env.test]
+name = "portfolio-test"
+routes = [
+  { pattern = "test.kaushikrb.com", custom_domain = true },
+]
+
+[env.test.vars]
+ENVIRONMENT = "test"
+
+[env.test.assets]
+directory = "./src"
+binding = "ASSETS"
+not_found_handling = "single-page-application"
+run_worker_first = true
