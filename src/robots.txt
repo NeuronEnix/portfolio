@@ -1,2 +1,4 @@
 User-agent: *
 Allow: /
+
+Sitemap: https://kaushikrb.com/sitemap.xml
