@@ -2,39 +2,12 @@ name = "portfolio"
 main = "worker/index.js"
 compatibility_date = "2025-05-01"
 
-# ── Prod environment ──────────────────────────────────────────────────
-# Deploys to kaushikrb.com (apex + www). Worker passes through to
-# static assets unchanged.
-[env.prod]
-name = "portfolio"
 routes = [
   { pattern = "kaushikrb.com", custom_domain = true },
   { pattern = "www.kaushikrb.com", custom_domain = true },
 ]
 
-[env.prod.vars]
-ENVIRONMENT = "prod"
-
-[env.prod.assets]
-directory = "./src"
-binding = "ASSETS"
-not_found_handling = "single-page-application"
-run_worker_first = true
-
-# ── Test environment ──────────────────────────────────────────────────
-# Deploys to test.kaushikrb.com as `portfolio-test`. The Worker stamps
-# X-Robots-Tag noindex headers and serves a Disallow-all robots.txt so
-# search engines do not index the test deployment.
-[env.test]
-name = "portfolio-test"
-routes = [
-  { pattern = "test.kaushikrb.com", custom_domain = true },
-]
-
-[env.test.vars]
-ENVIRONMENT = "test"
-
-[env.test.assets]
+[assets]
 directory = "./src"
 binding = "ASSETS"
 not_found_handling = "single-page-application"
