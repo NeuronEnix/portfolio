@@ -457,6 +457,19 @@ main {
   color: var(--accent);
   font-family: var(--mono);
 }
+.job-subhead {
+  margin: 24px 0 14px;
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+.job-subhead-mark {
+  color: var(--accent);
+  margin-right: 6px;
+}
 
 /* Education */
 .edu-card {
