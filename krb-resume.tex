@@ -1,0 +1,102 @@
+\documentclass[a4paper,10pt]{article}
+
+\usepackage[margin=0.6in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{enumitem}
+\usepackage{titlesec}
+\usepackage{xcolor}
+\usepackage{hyperref}
+\usepackage{parskip}
+\usepackage{textcomp}
+\usepackage{tipx}
+
+% Colors
+\definecolor{accent}{HTML}{2BB673}
+
+% Hyperlink styling
+\hypersetup{
+  colorlinks=true,
+  urlcolor=accent,
+  linkcolor=accent
+}
+
+% Section formatting
+\titleformat{\section}
+  {\color{accent}\Large\bfseries}
+  {}{0pt}{}[\vspace{-6pt}\color{accent}\rule{\linewidth}{1.2pt}]
+\titlespacing*{\section}{0pt}{12pt}{6pt}
+
+\titleformat{\subsection}
+  {\normalsize\bfseries}
+  {}{0pt}{}
+\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+
+% Bullet list spacing
+\setlist[itemize]{leftmargin=1.2em, itemsep=2pt, topsep=2pt, parsep=0pt}
+
+% Remove page numbers
+\pagestyle{empty}
+
+\begin{document}
+
+% ---------- HEADER ----------
+{\fontsize{26}{30}\selectfont Kaushik R Bangera}\\[2pt]
+{\color{accent}\large Senior Backend Engineer \textbar{} Distributed Systems \textbar{} Real-Time System \textbar{} AWS}\\[2pt]
+\href{mailto:kaushikrb909@gmail.com}{kaushikrb909@gmail.com} \textbar{} +91 9731176618\\
+\href{https://github.com/}{GitHub} \textbar{} \href{https://linkedin.com/}{LinkedIn}
+
+% ---------- SUMMARY ----------
+\section*{SUMMARY}
+Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{high-scale}, \textbf{real-time} gaming systems and \textbf{cloud-native} infrastructure on \textbf{AWS}. Proven in scaling production traffic to \textbf{\textasciitilde{}600K requests/min}, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through \textbf{strong observability and incident ownership}. Strong in \textbf{system design}, \textbf{performance optimization}, and \textbf{execution leadership} in fast-paced environments.
+
+% ---------- TECHNICAL SKILLS ----------
+\section*{TECHNICAL SKILLS}
+\textbf{Languages:} TypeScript, JavaScript, Python, SQL, Go\\
+\textbf{Backend:} Node.js, REST APIs, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, ETL\\
+\textbf{Databases:} PostgreSQL (RDS/Aurora), MySQL (Aurora), ClickHouse, MongoDB, Redis\\
+\textbf{AWS:} Lambda, EC2, EKS, S3, API Gateway, Kinesis, Firehose, Step Functions, Glue, Athena, SQS, Cognito, CloudWatch, Amazon Personalize\\
+\textbf{DevOps \& Tools:} Docker, Kubernetes, Terraform (IaC), NGINX, Git, Airflow, CI/CD, Percona Monitoring, Tailscale
+
+% ---------- EXPERIENCE ----------
+\section*{EXPERIENCE}
+
+\subsection*{{\color{accent}Jumbo --- New Delhi} \textnormal{-} Founding Engineer (Senior Backend Engineer)}
+\textbf{Aug 2024 -- Present}
+\begin{itemize}
+  \item Scaled the gaming platform to \textbf{\textasciitilde{}600,000 requests/min}, reliably handling \textbf{\textrupee 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
+  \item Rewrote the \textbf{core transaction service in Go + gRPC}, reducing latency to single-digit ms while ensuring financial correctness through \textbf{atomicity, idempotency, running balances}, and integer-based currency normalization to \textbf{eliminate float drift}; also built reliable \textbf{user-attribute fanout pipelines} for analytics/event platforms using \textbf{TDD and spec-driven development} with AI-assisted validation.
+  \item Owned the end-to-end \textbf{system architecture} for the in-house fantasy platform, defining \textbf{service boundaries, database schema, and API contracts} for scalable delivery.
+  \item \textbf{Reduced backend load by \textasciitilde{}50\%} by moving low-change/high-read APIs \textbf{behind CDN}, implementing correct \textbf{cache-control} and invalidation strategy.
+  \item Delivered an async \textbf{recharge + KYC orchestration layer} using a vendor-agnostic \textbf{Adapter Pattern}, reducing third-party dependency cost by \textbf{\textasciitilde{}70\%} through caching and retries.
+  \item Developed real-time infrastructure including \textbf{Redis + ClickHouse event aggregation/distribution} and a scalable \textbf{WebSocket platform (API Gateway + Redis)} for connection state, channel broadcasts, and WebSocket-based API calls.
+  \item Built centralized \textbf{logging + trace correlation} (ClickHouse + Redis) using \textbf{Node.js async\_hooks}, reducing MTTR and surfacing performance bottlenecks across services.
+  \item Improved \textbf{tail latency} and peak resilience through \textbf{API + DB bottleneck} analysis and \textbf{load testing} using \textbf{Locust, Percona, and ClickHouse}.
+  \item Modernized AWS infrastructure and security using \textbf{AWS Organizations, CI/CD pipelines, and IAM Identity Center RBAC}, securing internal access via \textbf{Tailscale} and enforcing least-privilege operations.
+  \item Strengthened system integrity with \textbf{OTP abuse prevention} and \textbf{multi-device concurrency conflict handling} for account safety and reliability.
+  \item Served as the \textbf{primary escalation owner} for production incidents, leading debugging, \textbf{incident resolution}, and release execution while unblocking the team.
+  \item Built an \textbf{Aviator game} from scratch and scaled it to \textbf{\textasciitilde{}1,000 CCU}, improving engagement through stable gameplay loops and production hardening.
+  \item Improved engineering velocity by using \textbf{AI-assisted tooling} and \textbf{MCP database workflows} for faster debugging, system insights, and architecture validation.
+\end{itemize}
+
+\subsection*{{\color{accent}Juego Studios --- Mangalore} \textnormal{-} Software Engineer (Backend / Cloud)}
+\textbf{Aug 2021 -- Jan 2024}
+\begin{itemize}
+  \item Built a resilient AWS ingestion platform using \textbf{Kinesis}, reducing projected infrastructure cost by \textbf{\textasciitilde{}66\%} while improving throughput and reliability.
+  \item Delivered end-to-end analytics pipelines using \textbf{AWS Glue ETL + Glue Catalog + Athena}, reducing query latency from \textbf{\textasciitilde{}7s $\rightarrow$ 1--2s} and enabling structured datasets.
+  \item Improved database scalability using \textbf{Aurora MySQL tuning}, \textbf{SQL transactions}, indexing, and \textbf{Redis caching}, achieving \textbf{\textasciitilde{}1,000 CCU and 1,000 RPS}.
+  \item Provisioned and maintained cloud infrastructure using \textbf{Terraform (IaC)}, enabling reproducible deployments and consistent environments.
+  \item Deployed and managed \textbf{multiplayer game} servers on \textbf{Kubernetes}, integrating \textbf{Agones} as a PoC for dedicated server scaling.
+  \item Implemented secure authentication including \textbf{M2M architecture} and JWT \textbf{access/refresh token flows} for service-to-service and client auth.
+  \item Built internal cost-optimization tooling including \textbf{Lambda memory benchmarking} and replacing \textbf{NAT Gateway with EC2 NAT}, reducing recurring AWS cost.
+  \item Integrated secure wallet authentication flows using \textbf{Metamask} and \textbf{Keplr} for Web3 gaming features.
+  \item Mentored engineers and collaborated across gameplay, frontend, CMS, and game design teams.
+\end{itemize}
+
+% ---------- EDUCATION ----------
+\section*{EDUCATION}
+\textbf{Srinivas Institute of Technology, Mangalore}\\
+B.E. Computer Science Engineering (2021)
+
+\end{document}

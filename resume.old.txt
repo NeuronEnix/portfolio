@@ -1,0 +1,107 @@
+Kaushik R Bangera
+Software Engineer | Backend Developer | Founding Engineer
+Over 3.5 years specializing in scalable, real-time gaming systems and
+cloud-native infrastructure on AWS
+
+Karnataka, Mangalore
+kaushikrb909@gmail.com
++91 9731176618
+Git: Kaushik R Bangera
+StackOverflow: Kaushik
+LinkedIn: Kaushik
+
+Experience
+Jumbo - New Delhi
+Founding Engineer - 1 Years, Aug 2024 - Present
+● System Architecture: Led the architectural design and development of an in-house
+fantasy game, defining the system, database, and API contracts.
+● Game Development & Scalability: Developed an Aviator game from scratch and scaled it
+to 1,000 concurrent users; boosted engagement by integrating bots, making it the app's
+top game.
+● Real-Time Data Processing: Architected an event aggregation service using Redis and
+ClickHouse, enabling asynchronous distribution that reduced vendor integration time
+from weeks to minutes and ensured fault tolerance with dead-letter buckets.
+● WebSocket Service: Built a game-agnostic, scalable WebSocket service with API
+Gateway and Redis to manage connection states, broadcast channel messages, and
+handle API calls over WebSockets.
+● Cost Optimization: Designed and implemented asynchronous recharge/KYC systems
+with a vendor-agnostic Adapter Pattern; reduced costs by 70% through strategic
+caching.
+● Performance Optimization: Drove performance optimization by analyzing API patterns
+and DB bottlenecks with ClickHouse, Percona, and Locust, scaling a service from 60 to
+1,000 CCU to handle 40k-50k requests/min.
+● Cloud Infrastructure & Security: Redesigned AWS infrastructure with organizational
+accounts, CI/CD, and Identity Center for role-based, least-privileged access, secured via
+Tailscale.
+● System Integrity: Implemented solutions for multi-device concurrency conflicts, OTP
+abuse prevention, and and prevented duplicate transaction with idempotency keys.
+● Centralized Logging & Tracing: Architected a highly scalable logging platform
+(ClickHouse, Redis) to ingest microservice logs. Leveraged Node.js async_hooks to
+group all events and database calls by request ID, creating a unified trace that
+significantly reduced Mean Time to Resolution (MTTR) and exposed application
+performance bottlenecks
+
+Skills
+● Node.js
+● JavaScript
+● TypeScript
+● PostgreSQL
+● MySQL
+● Clickhouse
+● Python
+● WebSocket
+● Ingestion System
+● ETL
+● AWS
+○ Lambda
+○ EC2
+○ S3
+○ Aurora MySQL
+○ API Gateway
+○ Kinesis Data Stream
+○ Kinesis Firehose
+○ Step Function
+○ Glue
+○ Athena
+○ SQS
+○ Cognito
+○ Amazon Personalize
+○ Cloud Watch
+● Docker
+● MiniKube
+● Kubernetes
+● Airflow
+● Terraform
+● Git
+● MongoDB
+● NGINX
+
+Juego Studios - Mangalore
+Software Engineer - 2.5 Years, Aug 2021 - Jan 2024
+● Created a highly resilient and scalable Ingestion System on AWS, utilizing Kinesis. Reduced estimated costs by
+~66%
+● Structured Glue Catalog tables, reducing query time from 7 seconds to 1-2 seconds
+● Designed and executed a data transformation pipeline to cleanse and convert raw data through Glue ETL jobs
+● Implemented various AWS services using Terraform, adhering to Infrastructure as Code principles
+● Integrated Agones into a project as a Proof of Concept (PoC), harnessing its capabilities as an open-source,
+multiplayer dedicated game server scaling tool that operates on Kubernetes
+● Developed M2M (Machine-to-Machine) Authentication architectures
+● Employed SQL transactions and optimized database performance, enhancing data retrieval with Redis
+● Achieved 1000 CCU and 1000 requests per second by modifying buffer sizes in the database (Aurora MySQL)
+● Deployed and managed game servers using Kubernetes
+● Established JWT token-based authentication using Access and Refresh tokens
+● Securely integrated Metamask wallet and Keplr wallet
+● Collaborated with cross-functional teams, including frontend, gameplay, CMS, and game design teams
+● Provided mentorship to team members and delegated tasks effectively.
+Internal Innovation
+● Developed a Lambda RAM picker to execute Lambda functions with various RAM configurations, determining
+the most cost-effective RAM allocation
+● Reused existing EC2 as NAT instance to replace NAT Gateway, reducing cost
+● Conducted extensive research and development on Amazon Personalize
+● Created a room handler featuring a bucket system to refine server-side game loops
+● Established a caching strategy for master tables
+● Implemented database synchronization to maintain consistent table structure
+
+Education
+Srinivas Institute of Technology, Mangalore
+B.E. in Computer Science Engineering - 2021
