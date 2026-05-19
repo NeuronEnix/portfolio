@@ -53,7 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=19" />
+    <link rel="stylesheet" href="styles.css?v=41" />
 
     <script type="application/ld+json">
       {
@@ -173,16 +173,8 @@
               </a>
             </div>
           </div>
-        </div>
 
-        <div class="hero-portrait">
-          <div class="portrait-wrap">
-            <div class="portrait-circle" aria-hidden="true"></div>
-            <div class="portrait-frame">
-              <div class="portrait-yellow" aria-hidden="true"></div>
-              <img class="portrait-img" src="/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
-            </div>
-
+          <div class="hero-stats">
             <div class="badge-row">
               <div class="badge badge-stat">
                 <span class="stat-num">~600K</span>
@@ -206,6 +198,44 @@
                 <span class="stat-num">~2 TB</span>
                 <span class="stat-lab">ClickHouse managed</span>
               </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-portrait">
+          <div class="portrait-wrap">
+            <div class="portrait-circle" aria-hidden="true"></div>
+            <div class="portrait-frame">
+              <div class="portrait-yellow" aria-hidden="true"></div>
+              <img class="portrait-img" src="/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
+            </div>
+
+            <div class="snapshot-card">
+              <span class="snapshot-yoe">4.5+ YoE</span>
+              <ul class="snapshot-list">
+                <li class="snapshot-row">
+                  <a class="snapshot-tile snapshot-co snapshot-co-jumbo" href="https://joinjumbo.com/" target="_blank" rel="noopener" aria-label="Jumbo website">
+                    <img src="/company_jumbo.png" alt="Jumbo" width="325" height="80" decoding="async" />
+                  </a>
+                  <a class="snapshot-title" href="#work-jumbo">Founding Engineer</a>
+                  <span class="snapshot-online" aria-label="Currently working here" title="Currently here"></span>
+                </li>
+                <li class="snapshot-row">
+                  <a class="snapshot-tile snapshot-co" href="https://www.juegostudio.com/" target="_blank" rel="noopener" aria-label="Juego Studios website">
+                    <img src="/company_juego.png" alt="Juego Studios" width="300" height="137" decoding="async" />
+                  </a>
+                  <a class="snapshot-title" href="#work-juego">Software Engineer</a>
+                </li>
+                <li class="snapshot-row">
+                  <span class="snapshot-tile snapshot-pin" aria-label="Based in">
+                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                      <path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+                      <circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9" />
+                    </svg>
+                  </span>
+                  <span class="snapshot-val">New Delhi <span class="snapshot-sep">·</span> Bangalore <span class="snapshot-sep">·</span> Mangalore</span>
+                </li>
+              </ul>
             </div>
           </div>
         </div>
@@ -316,7 +346,7 @@
         <h2 class="section-h">Where I've shipped at scale.</h2>
 
         <!-- Jumbo -->
-        <article class="work-card work-text-left">
+        <article id="work-jumbo" class="work-card work-text-left">
           <div class="work-content">
             <span class="work-tag work-tag-yellow">Jumbo · Founding Engineer</span>
             <h3 class="work-title">
@@ -354,7 +384,7 @@
         </article>
 
         <!-- Juego -->
-        <article class="work-card work-text-right">
+        <article id="work-juego" class="work-card work-text-right">
           <div class="work-visual work-visual-juego" aria-hidden="true">
             <div class="poster poster-juego">
               <span class="poster-corner poster-corner-light">02 / Juego Studios</span>

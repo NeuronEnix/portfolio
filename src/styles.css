@@ -167,11 +167,14 @@ code {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
-  align-items: center;
+  align-items: start;
   min-height: calc(100vh - 100px);
 }
 
-.hero-content { padding-right: 32px; }
+.hero-content {
+  padding-right: 32px;
+  margin-left: clamp(-80px, -4vw, -20px);
+}
 .hero-greet {
   font-family: var(--display);
   font-weight: 500;
@@ -327,6 +330,7 @@ code {
   position: relative;
   width: 100%;
   max-width: 420px;
+  margin-left: clamp(20px, 4vw, 70px);
 }
 
 .portrait-circle {
@@ -373,14 +377,20 @@ code {
   z-index: 2;
 }
 
-/* Stat badges — sit in horizontal rows below the portrait */
+/* Stat badges — sit in horizontal rows below the hero socials */
+.hero-stats {
+  margin-top: 84px;
+}
 .badge-row {
   display: flex;
   gap: 8px;
   margin-top: 20px;
 }
+.hero-stats .badge-row:first-child {
+  margin-top: 0;
+}
 .badge-row + .badge-row {
-  margin-top: 16px;
+  margin-top: 28px;
 }
 .badge {
   position: relative;
@@ -468,7 +478,7 @@ code {
 .badge-stat .stat-num {
   font-family: var(--display);
   font-weight: 800;
-  font-size: 20px;
+  font-size: 26px;
   letter-spacing: -0.025em;
   color: var(--yellow);
   line-height: 1;
@@ -486,12 +496,155 @@ code {
 }
 .badge-stat .stat-lab {
   font-family: var(--mono);
-  font-size: 9px;
+  font-size: 11px;
   letter-spacing: 0.16em;
   text-transform: uppercase;
   color: var(--ink-3);
-  margin-top: 5px;
+  margin-top: 7px;
   white-space: nowrap;
+}
+
+/* Career snapshot card under the portrait */
+.snapshot-card {
+  position: relative;
+  margin-top: 25px;
+  background: var(--bg-card);
+  color: var(--ink);
+  border-radius: 14px;
+  padding: 18px 20px 20px;
+  box-shadow:
+    0 22px 45px -22px rgba(0, 0, 0, 0.65),
+    0 0 0 1px rgba(255, 255, 255, 0.04);
+  z-index: 2;
+}
+.snapshot-card::before {
+  content: "";
+  position: absolute;
+  top: -6px;
+  left: 20px;
+  width: 32px;
+  height: 4px;
+  background: var(--yellow);
+  border-radius: 4px 4px 0 0;
+}
+.snapshot-yoe {
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--display);
+  font-weight: 800;
+  font-size: 38px;
+  letter-spacing: -0.025em;
+  color: var(--yellow);
+  line-height: 1;
+}
+.snapshot-yoe::before {
+  content: "";
+  display: inline-block;
+  width: 10px;
+  height: 10px;
+  background: var(--yellow);
+  border-radius: 2px;
+  margin-right: 9px;
+}
+.snapshot-list {
+  list-style: none;
+  padding: 0;
+  margin: 20px 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+.snapshot-val {
+  font-family: var(--display);
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--ink);
+  letter-spacing: -0.005em;
+}
+.snapshot-sep {
+  color: var(--yellow);
+  font-weight: 700;
+  margin: 0 4px;
+}
+
+.snapshot-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+}
+.snapshot-tile {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 99px;
+  height: 43px;
+  border-radius: 9px;
+  flex-shrink: 0;
+  box-shadow: 0 0 0 1px rgba(0, 0, 0, 0.08);
+}
+.snapshot-co {
+  background: #f4f1ea;
+  overflow: hidden;
+  padding: 5px 11px;
+  transition: transform 0.3s var(--ease), box-shadow 0.3s var(--ease);
+}
+.snapshot-co-jumbo {
+  background: #0E0833;
+  box-shadow: 0 0 0 1px rgba(255, 255, 255, 0.1);
+}
+.snapshot-co:hover {
+  transform: scale(1.04);
+  box-shadow: 0 8px 18px -8px rgba(0, 0, 0, 0.45), 0 0 0 1px var(--yellow);
+}
+.snapshot-co img {
+  max-width: 100%;
+  max-height: 100%;
+  width: auto;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+.snapshot-pin {
+  background: var(--yellow);
+  color: var(--dark);
+}
+.snapshot-title {
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 17px;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  text-decoration: none;
+  border-bottom: 2px solid transparent;
+  transition: color 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.snapshot-title:hover {
+  border-bottom-color: var(--yellow);
+}
+.snapshot-online {
+  position: relative;
+  display: inline-block;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #22c55e;
+  flex-shrink: 0;
+  margin-left: -11px;
+}
+.snapshot-online::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  background: rgba(34, 197, 94, 0.55);
+  animation: snapshotPulse 1.8s var(--ease) infinite;
+  pointer-events: none;
+}
+@keyframes snapshotPulse {
+  0%   { transform: scale(1);   opacity: 1; }
+  70%  { transform: scale(2.6); opacity: 0; }
+  100% { transform: scale(2.6); opacity: 0; }
 }
 
 /* ═════════════════════════════════════════════════════════════
