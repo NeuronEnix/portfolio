@@ -1,0 +1,183 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>A resilient AWS ingestion pipeline with Glue ETL — Kaushik R Bangera</title>
+    <meta
+      name="description"
+      content="An event-driven AWS pipeline that validates, dead-letters, transforms and catalogs raw uploads — making them queryable in Athena with Parquet on S3, at ~66% less cost."
+    />
+    <meta name="author" content="Kaushik R Bangera" />
+    <meta name="theme-color" content="#E8E5DD" />
+    <meta name="color-scheme" content="light" />
+
+    <link rel="canonical" href="https://kaushikrb.com/blog/aws-glue-etl-ingestion" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="A resilient AWS ingestion pipeline with Glue ETL" />
+    <meta property="og:description" content="Validate, route, transform, catalog, query — without the babysitting." />
+    <meta property="og:url" content="https://kaushikrb.com/blog/aws-glue-etl-ingestion" />
+    <meta property="og:image" content="https://kaushikrb.com/og-image.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="A resilient AWS ingestion pipeline with Glue ETL" />
+    <meta name="twitter:image" content="https://kaushikrb.com/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=44" />
+  </head>
+  <body class="post-page">
+    <header class="post-topbar">
+      <a class="brand" href="/" aria-label="Kaushik R Bangera home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 36 36" width="32" height="32" aria-hidden="true">
+            <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M11 9 V27 M11 18 L23 9 M14.5 15.5 L25 27" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+        </span>
+      </a>
+      <nav class="topbar-nav" aria-label="Primary">
+        <a href="/#about">About me</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#blogs">Blogs</a>
+        <a href="/#work">Work</a>
+        <a class="topbar-cta" href="/#contact">Contact me</a>
+      </nav>
+    </header>
+
+    <article>
+      <header class="post-hero">
+        <a class="post-back" href="/#blogs">← All blogs</a>
+        <p class="post-eyebrow"><span class="post-eyebrow-tag">Notes</span>AWS · Data Pipeline</p>
+        <h1 class="post-title">A resilient AWS ingestion pipeline with Glue ETL</h1>
+        <p class="post-lede">
+          Most data-pipeline pain isn't in the transformation — it's in the bad inputs you never validated and the partial runs you never re-ran. This is a walk through the pipeline I built at Juego: event-driven, dead-lettered, catalog-aware and roughly 66% cheaper than what came before.
+        </p>
+        <p class="post-meta">
+          <span>7 min read</span>
+          <span>S3 · Lambda · Glue · Athena</span>
+          <span>Juego Studios</span>
+        </p>
+      </header>
+
+      <div class="post-body">
+        <h2>Design goals</h2>
+        <ul>
+          <li><strong>Validate at the door.</strong> Don't ingest schema-violating data.</li>
+          <li><strong>Never block the pipeline on a bad record.</strong> Dead-letter and move on.</li>
+          <li><strong>Event-driven, not cron-driven.</strong> Files trigger their own processing.</li>
+          <li><strong>Idempotent.</strong> Re-runs don't re-process work that already landed.</li>
+          <li><strong>Athena-queryable.</strong> Once written, the data is immediately discoverable and queryable.</li>
+        </ul>
+
+        <h2>The pipeline, end to end</h2>
+        <p>
+          Five logical stages — each decoupled by S3 or SQS so failures stay local:
+        </p>
+        <ol>
+          <li><strong>Raw upload</strong> lands in <code>S3: raw-impure</code>.</li>
+          <li><strong>Lambda validator</strong> fires on object-create. It reads the matching schema from the <strong>Glue Schema Registry</strong>. Pass → <code>S3: raw</code>. Fail → <code>S3: deadletter</code>.</li>
+          <li><strong>Glue Crawler</strong> watches new objects via SQS and writes one or more <strong>Glue Catalog tables</strong> describing the raw data.</li>
+          <li><strong>Glue ETL job</strong> runs daily with bookmarks enabled. It reads the raw catalog tables, applies one transformation per table family, and writes <strong>Parquet</strong> back to S3 — flat data direct, nested data via a crawler that discovers schema after the write.</li>
+          <li><strong>Athena</strong> reads the Parquet catalog tables. SQL-like queries; pay-per-scan.</li>
+        </ol>
+
+<pre><code>upload → S3: raw-impure
+          │  (object-create trigger)
+          ▼
+       Lambda validator  ← Glue Schema Registry (get schema)
+          │
+   ┌──────┴──────┐
+   ▼             ▼
+S3: deadletter  S3: raw
+                 │  (object-create → SQS)
+                 ▼
+            Glue Crawler ── writes ──▶ Glue Catalog: raw_*
+                                          │
+                                          ▼
+                                     Glue ETL job (daily, bookmark)
+                                          │
+                          ┌───────────────┴───────────────┐
+                          ▼                               ▼
+                  S3: parquet_data_1            S3: parquet_data_2 (nested)
+                  catalog: parquet_1                     │
+                                                  (object-create → SQS)
+                                                         ▼
+                                                  Glue Crawler
+                                                  catalog: parquet_2
+                                                         │
+                                                         ▼
+                                                       Athena</code></pre>
+
+        <h2>Why each piece exists</h2>
+
+        <h3>Schema Registry + Lambda validator</h3>
+        <p>
+          The two cheapest production incidents to prevent are "we ingested rows with the wrong columns" and "we ingested data that crashed the ETL job halfway through." A validator Lambda backed by the Schema Registry catches both. Pass-through latency is single-digit milliseconds. Bad records go to a separate bucket where they can be reviewed, replayed, or simply deleted.
+        </p>
+
+        <h3>SQS in front of the crawler</h3>
+        <p>
+          Glue Crawlers don't scale by being invoked harder. Putting an SQS queue in front means you can fan-in a burst of new objects and the crawler processes them in its own time, without a thundering-herd of <code>StartCrawler</code> calls. Bursts are absorbed; the rest of the pipeline keeps moving.
+        </p>
+
+        <h3>ETL bookmarks</h3>
+        <p>
+          Glue's bookmark feature is the single line of config that turns the daily job from "rebuild everything" into "process what arrived since last run." That's the difference between a job that gets cheaper as the data grows and one that gets exponentially more expensive.
+        </p>
+
+        <h3>Two paths after transform — flat vs nested</h3>
+        <p>
+          Flat data writes Parquet <em>and</em> updates the catalog in one step — schema is already known. Nested data writes Parquet and re-runs a crawler over it, because Glue's catalog writer doesn't handle arbitrarily nested schemas well. Routing this at write time is much cleaner than discovering it later.
+        </p>
+
+        <h2>What it actually moved</h2>
+        <ul>
+          <li><strong>Cost down ~66%.</strong> Mostly from removing perpetually-running EMR clusters and replacing them with on-demand Glue ETL.</li>
+          <li><strong>Athena query latency 7s → 1–2s</strong> by structuring the catalog correctly: file-size-aware partitions, column projection on time-stamped fields, Parquet over JSON.</li>
+          <li><strong>Operational quiet.</strong> The pipeline runs unattended. Bad inputs route themselves out of the way. Re-running a day is a button.</li>
+        </ul>
+
+        <h2>What I'd do differently next time</h2>
+        <ul>
+          <li><strong>Make the dead-letter bucket noisy.</strong> Surface dead-letter counts as a metric — silence here is dangerous, not good.</li>
+          <li><strong>Skip the crawler for the parquet output.</strong> If the ETL job already knows the output schema, write it directly to the catalog. The crawler is a stop-gap for nested data; don't pay it for flat data.</li>
+          <li><strong>Compaction on a schedule.</strong> Small Parquet files hurt Athena's read cost. A weekly compaction job earns its keep.</li>
+        </ul>
+
+        <div class="post-callout">
+          <div>
+            <strong>The shape of the lesson:</strong> a good ingestion pipeline is mostly about decoupling — every stage hands off via S3 or a queue, and any one stage can fail without dragging the rest down with it. The transformations are easy. The routing is the system.
+          </div>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <a href="/#blogs">← All blogs</a>
+        <a href="/#contact">Get in touch →</a>
+      </footer>
+    </article>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Kaushik R Bangera</span>
+      <span class="footer-dot">·</span>
+      <span>Built with vanilla HTML, CSS &amp; JS</span>
+    </footer>
+
+    <script>
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

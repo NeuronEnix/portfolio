@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>How a 2 GB buffer pool made MySQL full-text 100× faster — Kaushik R Bangera</title>
+    <meta
+      name="description"
+      content="Full-text vs B-tree index on a 93M-row MySQL table. Same query, same data — and the difference between 21 seconds and 0.6 seconds came down to innodb_buffer_pool_size."
+    />
+    <meta name="author" content="Kaushik R Bangera" />
+    <meta name="theme-color" content="#E8E5DD" />
+    <meta name="color-scheme" content="light" />
+
+    <link rel="canonical" href="https://kaushikrb.com/blog/mysql-fulltext-vs-regular-index" />
+
+    <meta property="og:type" content="article" />
+    <meta property="og:title" content="How a 2 GB buffer pool made MySQL full-text 100× faster" />
+    <meta property="og:description" content="Full-text vs B-tree on a 93M-row table — and the one config knob that mattered." />
+    <meta property="og:url" content="https://kaushikrb.com/blog/mysql-fulltext-vs-regular-index" />
+    <meta property="og:image" content="https://kaushikrb.com/og-image.svg" />
+
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="How a 2 GB buffer pool made MySQL full-text 100× faster" />
+    <meta name="twitter:image" content="https://kaushikrb.com/og-image.svg" />
+
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
+    <link rel="icon" href="/favicon.ico" sizes="any" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/favicon-180.png" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css?v=44" />
+  </head>
+  <body class="post-page">
+    <header class="post-topbar">
+      <a class="brand" href="/" aria-label="Kaushik R Bangera home">
+        <span class="brand-mark">
+          <svg viewBox="0 0 36 36" width="32" height="32" aria-hidden="true">
+            <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
+            <path d="M11 9 V27 M11 18 L23 9 M14.5 15.5 L25 27" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
+          </svg>
+        </span>
+      </a>
+      <nav class="topbar-nav" aria-label="Primary">
+        <a href="/#about">About me</a>
+        <a href="/#skills">Skills</a>
+        <a href="/#blogs">Blogs</a>
+        <a href="/#work">Work</a>
+        <a class="topbar-cta" href="/#contact">Contact me</a>
+      </nav>
+    </header>
+
+    <article>
+      <header class="post-hero">
+        <a class="post-back" href="/#blogs">← All blogs</a>
+        <p class="post-eyebrow"><span class="post-eyebrow-tag">Notes</span>MySQL · Indexing</p>
+        <h1 class="post-title">How a 2 GB buffer pool made MySQL full-text 100× faster</h1>
+        <p class="post-lede">
+          The brief looked simple: search a global contact list by name, prefix matches first, partial matches second. The interesting part wasn't picking the right index — it was discovering how much the buffer pool changed the answer.
+        </p>
+        <p class="post-meta">
+          <span>8 min read</span>
+          <span>MySQL · InnoDB</span>
+          <span>2024-06-14</span>
+        </p>
+      </header>
+
+      <div class="post-body">
+        <h2>The problem</h2>
+        <p>
+          Search a <code>company</code> table by <code>name</code>. Results that <strong>start with</strong> the query should rank above results that merely <strong>contain</strong> it. The table holds tens of millions of rows. The dataset I tested against had two sizes — 23 million rows and 93 million rows — both indexed two ways: a regular B-tree and a MySQL <code>FULLTEXT</code> index.
+        </p>
+
+        <h2>Two indexes, two very different jobs</h2>
+        <p>
+          On paper, a full-text index is the textbook answer for "search inside text." In practice the two indexes do different things:
+        </p>
+        <ul>
+          <li><strong>B-tree</strong> is fast for exact and prefix matches (<code>LIKE 'sing%'</code>) and for sorting. Substring search (<code>LIKE '%sing%'</code>) scans the whole index.</li>
+          <li><strong>Full-text</strong> uses an inverted index. It's case-insensitive, fast for word-boundary matches, but it can't find a fragment buried inside a word. Searching for <code>sh*</code> matches "Shank" or "Ron Sharma" — it will not match "Cashing."</li>
+        </ul>
+        <p>
+          Two other defaults bite you on the first run:
+        </p>
+        <ul>
+          <li><code>ft_min_word_len</code> defaults to <strong>4</strong>. Queries shorter than four characters return nothing unless you tune it.</li>
+          <li>Full-text is bad at sorting compared to a B-tree, because the inverted index has no useful order for the result rows.</li>
+        </ul>
+
+        <h2>The query</h2>
+        <p>
+          Two variants — one for each index. The <code>CASE</code> in the <code>ORDER BY</code> is how prefix matches float above substring matches.
+        </p>
+<pre><code>-- Full-text
+SELECT name FROM company, (SELECT @a:=NULL) AS init
+WHERE MATCH(name) AGAINST("sing*" IN BOOLEAN MODE)
+ORDER BY
+  CASE
+    WHEN name LIKE "sing%" THEN 0
+    ELSE LOCATE("sing", name)
+  END, name
+LIMIT 5000;
+
+-- Regular B-tree
+SELECT _name FROM company, (SELECT @a:=NULL) AS init
+WHERE _name LIKE "sing%"
+ORDER BY _name
+LIMIT 5000;</code></pre>
+        <p>
+          The <code>(SELECT @a:=NULL)</code> trick disables MySQL's query cache for the run, so each measurement starts cold.
+        </p>
+
+        <h2>First pass: looks like a tie</h2>
+        <p>
+          On 23M rows, sorted, with default settings:
+        </p>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead>
+              <tr><th>Index</th><th>Query</th><th>Time</th><th>Rows touched</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>Full-text</td><td><code>sing*</code></td><td>5.8 s</td><td>23,429</td></tr>
+              <tr><td>B-tree</td><td><code>sing%</code></td><td>30 ms</td><td>19,927</td></tr>
+              <tr><td>B-tree</td><td><code>%sing%</code></td><td>11.5 s</td><td>23.3 M</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          B-tree on a prefix query is the obvious winner. But the assignment also wanted substring matches surfaced, where the B-tree falls off a cliff. Full-text "should" win — and yet it took 5.8 seconds. The estimated query cost from <code>EXPLAIN FORMAT=JSON</code> said full-text was four times cheaper. Why was it the slowest in practice?
+        </p>
+
+        <h2>The buffer pool was the bottleneck</h2>
+        <p>
+          MySQL's <code>innodb_buffer_pool_size</code> caches pages of data and index in memory. The default is 128 MB. When the working set of a full-text index doesn't fit, every probe pays disk I/O.
+        </p>
+        <p>
+          The full-text index for the 23M-row table didn't fit in 128 MB. So I raised the buffer pool to 2 GB and re-ran the exact same queries.
+        </p>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead>
+              <tr><th>Config</th><th>Index</th><th>Query</th><th>Time</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>128 MB buffer</td><td>FT</td><td><code>sing*</code></td><td>5.8 s</td></tr>
+              <tr><td>2 GB buffer</td><td>FT</td><td><code>sing*</code></td><td>172 ms</td></tr>
+              <tr><td>2 GB buffer</td><td>B-tree</td><td><code>%sing%</code></td><td>11.5 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          Same data, same query, same SQL — <strong>~34× faster</strong>. The change was a single config knob.
+        </p>
+
+        <h2>It scales</h2>
+        <p>
+          On 93M rows the gap widens. Sorted full-text on default settings ran for over 21 seconds. With a 3 GB buffer it finished in 585 ms.
+        </p>
+        <div class="post-table-wrap">
+          <table class="post-table">
+            <thead>
+              <tr><th>Config</th><th>Index</th><th>Time (sorted)</th></tr>
+            </thead>
+            <tbody>
+              <tr><td>128 MB buffer</td><td>FT</td><td>21.7 s</td></tr>
+              <tr><td>2 GB buffer</td><td>FT</td><td>10.1 s</td></tr>
+              <tr><td>3 GB buffer</td><td>FT</td><td><strong>585 ms</strong></td></tr>
+              <tr><td>—</td><td>B-tree <code>sing%</code></td><td>153 ms</td></tr>
+              <tr><td>—</td><td>B-tree <code>%sing%</code></td><td>46 s</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <p>
+          A heuristic dropped out of this: with a default-sized buffer, full-text seems to take roughly 5 seconds for every 25K rows it scans. With the index resident in memory, that drops to <strong>0.5–1 second per 100K rows</strong>.
+        </p>
+
+        <h2>A few surprises worth remembering</h2>
+        <ul>
+          <li>Adding a B-tree index over 93M rows took 9m 32s. Adding a full-text index over the same data took 10m 10s. They are <em>not</em> in different leagues to build.</li>
+          <li>Full-text is a <em>word-boundary</em> tool. Wildcards (<code>+</code>, <code>*</code>) at the start of a token do not magically make it substring-capable.</li>
+          <li><code>EXPLAIN</code> estimates can lie about wall-clock time when the index doesn't fit in memory. Always confirm with <code>EXPLAIN ANALYZE</code> on representative data.</li>
+          <li><code>bulk_insert_buffer_size</code> defaults to 8 MB and <code>innodb_online_alter_log_max_size</code> to 128 MB. Both are worth raising when you load and then index big tables.</li>
+        </ul>
+
+        <h2>A decision tree</h2>
+        <ul>
+          <li><strong>Prefix only</strong> (<code>foo%</code>) — B-tree, no question.</li>
+          <li><strong>Word-boundary substring + sorted, willing to tune InnoDB</strong> — full-text, but size <code>innodb_buffer_pool_size</code> to fit the FT index.</li>
+          <li><strong>True substring</strong> (<code>%foo%</code>) over a large table — neither does well. Reach for a trigram index, generated columns, or an external search engine.</li>
+        </ul>
+
+        <div class="post-callout">
+          <div>
+            <strong>The lesson:</strong> the right index is half the answer. The other half is making sure the index lives in RAM. On full-text indexes especially, <code>innodb_buffer_pool_size</code> is the lever — get the working set in memory and the same query runs orders of magnitude faster, with no code change.
+          </div>
+        </div>
+      </div>
+
+      <footer class="post-foot">
+        <a href="/#blogs">← All blogs</a>
+        <a href="/#contact">Get in touch →</a>
+      </footer>
+    </article>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> Kaushik R Bangera</span>
+      <span class="footer-dot">·</span>
+      <span>Built with vanilla HTML, CSS &amp; JS</span>
+    </footer>
+
+    <script>
+      const y = document.getElementById("year");
+      if (y) y.textContent = new Date().getFullYear();
+    </script>
+  </body>
+</html>

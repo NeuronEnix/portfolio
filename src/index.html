@@ -53,7 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=41" />
+    <link rel="stylesheet" href="styles.css?v=44" />
 
     <script type="application/ld+json">
       {
@@ -126,6 +126,7 @@
         <nav class="topbar-nav" aria-label="Primary">
           <a href="#about">About me</a>
           <a href="#skills">Skills</a>
+          <a href="#blogs">Blogs</a>
           <a href="#work">Work</a>
           <a class="topbar-cta" href="#contact">Contact me</a>
         </nav>
@@ -333,6 +334,60 @@
             <h3 class="skill-title">DevOps &amp; Tools</h3>
             <p class="skill-list">Docker · Kubernetes · Terraform · NGINX · Airflow · CI/CD · Datadog · Percona · Tailscale · Git</p>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────
+         Blogs
+         ──────────────────────────────────────────────────────────── -->
+    <section id="blogs" class="section section-blogs">
+      <div class="section-shell">
+        <p class="section-eyebrow"><span class="eyebrow-rule"></span>Blogs</p>
+        <h2 class="section-h">Notes from the build.</h2>
+
+        <div class="blog-grid">
+          <a class="blog-card" href="/blog/mysql-fulltext-vs-regular-index.html">
+            <span class="blog-tag">MySQL · Indexing</span>
+            <h3 class="blog-card-title">
+              How a 2 GB buffer pool made MySQL full-text 100× faster
+            </h3>
+            <p class="blog-card-lede">
+              Full-text vs B-tree on a 93M-row table. Same query, same data — and the difference between 21 seconds and 0.6 seconds came down to one config knob.
+            </p>
+            <p class="blog-card-meta">
+              <span class="blog-card-time">8 min read</span>
+              <span class="blog-card-arrow" aria-hidden="true">→</span>
+            </p>
+          </a>
+
+          <a class="blog-card" href="/blog/agones-multiplayer-scaling.html">
+            <span class="blog-tag">Kubernetes · Multiplayer</span>
+            <h3 class="blog-card-title">
+              Scaling multiplayer game servers with Agones on Kubernetes
+            </h3>
+            <p class="blog-card-lede">
+              Long-lived player sessions don't autoscale like an HTTP service. A walkthrough of the architecture I built around Agones, Open Match and a custom Game Server Manager to allocate rooms, re-use warm pods, and scale by room count.
+            </p>
+            <p class="blog-card-meta">
+              <span class="blog-card-time">9 min read</span>
+              <span class="blog-card-arrow" aria-hidden="true">→</span>
+            </p>
+          </a>
+
+          <a class="blog-card" href="/blog/aws-glue-etl-ingestion.html">
+            <span class="blog-tag">AWS · Data Pipeline</span>
+            <h3 class="blog-card-title">
+              A resilient AWS ingestion pipeline with Glue ETL
+            </h3>
+            <p class="blog-card-lede">
+              Validate, route, transform, catalog, query. A walk through an event-driven pipeline that pushed cost down ~66% and made Athena queries sub-second on a Parquet lake.
+            </p>
+            <p class="blog-card-meta">
+              <span class="blog-card-time">7 min read</span>
+              <span class="blog-card-arrow" aria-hidden="true">→</span>
+            </p>
+          </a>
         </div>
       </div>
     </section>
