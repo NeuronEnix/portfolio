@@ -199,12 +199,16 @@ code {
 }
 .hero-role {
   font-family: var(--display);
-  font-weight: 500;
+  font-weight: 600;
   font-size: clamp(22px, 2.6vw, 32px);
-  color: var(--text-mid);
+  color: var(--text);
   margin: 0 0 48px;
   letter-spacing: -0.015em;
   line-height: 1.25;
+}
+.hero-role-em {
+  color: var(--yellow);
+  font-weight: 700;
 }
 .hero-slash {
   color: var(--yellow);
@@ -219,6 +223,40 @@ code {
   display: flex;
   gap: 14px;
 }
+
+.hero-resume {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  height: 54px;
+  padding: 0 22px 0 14px;
+  background: var(--yellow);
+  color: #ffffff;
+  border-radius: 14px;
+  font-family: var(--display);
+  font-weight: 600;
+  font-size: 15px;
+  letter-spacing: -0.005em;
+  text-decoration: none;
+  transition: background 0.3s var(--ease), transform 0.35s var(--ease), box-shadow 0.4s var(--ease);
+  box-shadow: 0 10px 22px -12px rgba(245, 188, 45, 0.5);
+}
+.hero-resume-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 8px;
+  background: rgba(0, 0, 0, 0.18);
+  color: #ffffff;
+}
+.hero-resume:hover {
+  background: #E5A91A;
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px -12px rgba(245, 188, 45, 0.65);
+}
+.hero-resume:hover .hero-resume-icon { background: rgba(0, 0, 0, 0.28); }
 
 .social-btn {
   width: 54px;
