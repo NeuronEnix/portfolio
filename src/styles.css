@@ -96,13 +96,18 @@ code {
 
 /* Top bar */
 .topbar {
-  position: relative;
-  z-index: 5;
+  position: sticky;
+  top: 0;
+  z-index: 50;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 28px var(--pad);
+  padding: 20px var(--pad);
   gap: 24px;
+  background: rgba(11, 11, 17, 0.75);
+  backdrop-filter: saturate(150%) blur(12px);
+  -webkit-backdrop-filter: saturate(150%) blur(12px);
+  border-bottom: 1px solid var(--rule);
 }
 
 .brand {
@@ -144,10 +149,10 @@ code {
 .topbar-cta {
   background: var(--yellow);
   color: var(--dark) !important;
-  padding: 22px 56px;
+  padding: 10px 22px;
   border-radius: 999px;
   font-weight: 700;
-  font-size: 19px;
+  font-size: 15.5px;
   letter-spacing: -0.005em;
   transition: background 0.3s var(--ease), color 0.3s var(--ease), transform 0.3s var(--ease), box-shadow 0.4s var(--ease);
 }
@@ -163,12 +168,12 @@ code {
   z-index: 2;
   max-width: var(--max);
   margin: 0 auto;
-  padding: 32px var(--pad) 80px;
+  padding: 48px var(--pad) 80px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 64px;
   align-items: start;
-  min-height: calc(100vh - 100px);
+  min-height: calc(100vh - 80px);
 }
 
 .hero-content {
@@ -231,7 +236,7 @@ code {
   height: 54px;
   padding: 0 22px 0 14px;
   background: var(--yellow);
-  color: #ffffff;
+  color: var(--dark);
   border-radius: 14px;
   font-family: var(--display);
   font-weight: 600;
@@ -249,7 +254,7 @@ code {
   height: 28px;
   border-radius: 8px;
   background: rgba(0, 0, 0, 0.18);
-  color: #ffffff;
+  color: var(--dark);
 }
 .hero-resume:hover {
   background: #E5A91A;
@@ -692,6 +697,7 @@ code {
 .section {
   padding: 120px 0;
   position: relative;
+  scroll-margin-top: 72px;
 }
 .section-shell {
   max-width: var(--max);
@@ -1588,7 +1594,7 @@ code {
 
 .contact-grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: 16px;
 }
 .contact-card {
