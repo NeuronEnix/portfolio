@@ -1,6 +1,6 @@
 \documentclass[a4paper,10pt]{article}
 
-\usepackage[margin=0.5in]{geometry}
+\usepackage[margin=0.45in]{geometry}
 \usepackage[T1]{fontenc}
 \usepackage[utf8]{inputenc}
 \usepackage{lmodern}
@@ -10,6 +10,9 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{textcomp}
+% ATS: no hyphenation + ragged-right so keywords don't split and text extracts in order
+\usepackage[none]{hyphenat}
+\usepackage{ragged2e}
 
 % Colors
 \definecolor{accent}{HTML}{2BB673}
@@ -25,53 +28,54 @@
 \titleformat{\section}
   {\color{accent}\large\bfseries}
   {}{0pt}{}[\vspace{-5pt}\color{accent}\rule{\linewidth}{1pt}]
-\titlespacing*{\section}{0pt}{8pt}{4pt}
+\titlespacing*{\section}{0pt}{5pt}{3pt}
 
 \titleformat{\subsection}
   {\normalsize\bfseries}
   {}{0pt}{}
-\titlespacing*{\subsection}{0pt}{6pt}{2pt}
+\titlespacing*{\subsection}{0pt}{4pt}{2pt}
 
 % Bullet list spacing
-\setlist[itemize]{leftmargin=1.1em, itemsep=2pt, topsep=1pt, parsep=0pt}
+\setlist[itemize]{leftmargin=1.1em, itemsep=1pt, topsep=1pt, parsep=0pt}
 \renewcommand{\labelitemi}{-}
 
 % Remove page numbers
 \pagestyle{empty}
 
 \begin{document}
+\RaggedRight
 
 % ---------- HEADER ----------
 {\fontsize{26}{30}\selectfont Kaushik R Bangera}\\[2pt]
 {\color{accent}\large Senior Backend Engineer \textbar{} Distributed Systems \textbar{} Real-Time Systems \textbar{} AWS}\\[2pt]
-\href{mailto:kaushikrb909@gmail.com}{kaushikrb909@gmail.com} \textbar{} +91 9731176618 \textbar{} \href{https://kaushikrb.com/}{kaushikrb.com} \textbar{} \href{https://github.com/NeuronEnix}{GitHub} \textbar{} \href{https://www.linkedin.com/in/kaushik-r-bangera/}{LinkedIn}
+\href{mailto:kaushikrb909@gmail.com}{kaushikrb909@gmail.com} \textbar{} +91 9731176618 \textbar{} \href{https://kaushikrb.com/?utm_source=resume}{kaushikrb.com} \textbar{} \href{https://github.com/NeuronEnix}{GitHub} \textbar{} \href{https://www.linkedin.com/in/kaushik-r-bangera/}{LinkedIn}
 
-\vspace{6pt}
+\vspace{3pt}
 
 % ---------- TWO COLUMN BODY ----------
 \noindent
-\begin{minipage}[t]{0.63\textwidth}
+\begin{minipage}[t]{0.60\textwidth}
 
 % ---------- EXPERIENCE ----------
 \section*{EXPERIENCE}
 
 \subsection*{{\color{accent}Jumbo --- New Delhi}\\ \textnormal{Senior Backend Engineer (Founding Engineer)} \textbar{} Aug 2024 -- Present}
 \begin{itemize}
-  \item Scaled the gaming platform to \textbf{\textasciitilde{}600,000 requests/min}, reliably handling \textbf{INR 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
-  \item Rewrote the \textbf{core transaction service in Go + gRPC} (single-digit ms) with \textbf{atomicity, idempotency, running balances}, and a \textbf{multi-currency ledger} with \textbf{liability tracking} and automated \textbf{clawback reconciliation}.
+  \item Scaled the gaming platform from \textbf{\textasciitilde{}15K} to \textbf{\textasciitilde{}700K requests/min} for \textbf{\textasciitilde{}100K+ MAU} (80K+ weekly active), reliably handling \textbf{INR 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
+  \item Rewrote the \textbf{core transaction service in Go + gRPC} (latency from \textbf{\textasciitilde{}150 ms} to \textbf{\textasciitilde{}50 ms}) with \textbf{atomicity, idempotency, running balances}, and a \textbf{multi-currency ledger} with \textbf{liability tracking} and automated \textbf{clawback reconciliation}.
   \item Built a \textbf{vendor-agnostic event pipeline}: one typed event is batched, streamed via \textbf{Redis}, and \textbf{fanned out to multiple analytics vendors} (CleverTap, PostHog, Matomo) while persisted \textbf{first-party in ClickHouse}, removing third-party lock-in.
   \item Owned the end-to-end \textbf{system architecture} for the in-house fantasy platform --- \textbf{service boundaries, database schema, and API contracts}.
-  \item \textbf{Reduced backend load and CDN cost by \textasciitilde{}40--50\%} by moving low-change/high-read APIs \textbf{behind a CDN} with correct \textbf{cache-control} (cached at the Cloudflare edge and on-device).
+  \item Reduced backend load and CDN cost by \textbf{\textasciitilde{}40--50\%} by moving low-change/high-read APIs \textbf{behind a CDN} with correct \textbf{cache-control} (cached at the Cloudflare edge and on-device).
   \item Delivered an async \textbf{recharge + KYC orchestration layer} using a vendor-agnostic \textbf{Adapter Pattern}, cutting third-party dependency cost by \textbf{\textasciitilde{}70\%} via caching and retries.
   \item Built centralized \textbf{logging + trace correlation} (ClickHouse + Redis, \textbf{Node.js async\_hooks}) and drove \textbf{API/DB load testing} (Locust, Percona) to cut MTTR and tail latency.
-  \item Reclaimed \textbf{\textasciitilde{}50\% of database storage} using \textbf{pg\_repack} to rebuild bloated tables, reindex, and clear dead tuples, improving cache efficiency and query performance.
+  \item Reclaimed \textbf{\textasciitilde{}30\% of database storage} using \textbf{pg\_repack} to rebuild bloated tables, reindex, and clear dead tuples, improving cache efficiency and query performance.
   \item Hardened security with \textbf{IAM Identity Center RBAC}, \textbf{Tailscale} least-privilege access, \textbf{zero-downtime JWT key rotation} (\texttt{kid}-based, no forced logout), and \textbf{OTP-abuse prevention}.
-  \item Built an \textbf{Aviator real-time game} from scratch on a \textbf{WebSocket platform (API Gateway + Redis)}, scaling to \textbf{\textasciitilde{}1,000 CCU} with stable gameplay loops.
+  \item Built an \textbf{Aviator real-time game} from scratch on a \textbf{WebSocket platform (API Gateway + Redis)}, scaling \textbf{0 $\rightarrow$ \textasciitilde{}1,000 CCU} with stable gameplay loops.
 \end{itemize}
 
 \subsection*{{\color{accent}Juego Studios --- Mangalore}\\ \textnormal{Software Engineer (Backend / Cloud)} \textbar{} Aug 2021 -- Jan 2024}
 \begin{itemize}
-  \item Built a resilient AWS \textbf{ingestion platform} using \textbf{Kinesis}, reducing projected infrastructure cost by \textbf{\textasciitilde{}66\%}.
+  \item Built a resilient AWS \textbf{ingestion platform} using \textbf{Kinesis}, cutting projected infrastructure cost \textbf{\$1,200 $\rightarrow$ \$400/mo} (\textasciitilde{}66\%).
   \item Delivered analytics pipelines using \textbf{AWS Glue ETL (PySpark) + Glue Catalog + Athena}, converting raw data to columnar \textbf{Parquet} to cut storage and reduce query latency from \textbf{\textasciitilde{}7s $\rightarrow$ 1--2s}.
   \item Improved database scalability via \textbf{Aurora MySQL tuning}, \textbf{SQL transactions}, indexing, and \textbf{Redis caching}, achieving \textbf{\textasciitilde{}1,000 CCU and 1,000 RPS}.
   \item Deployed \textbf{multiplayer game servers on Kubernetes} (Agones PoC for dedicated-server scaling), provisioned via \textbf{Terraform (IaC)}.
@@ -81,23 +85,27 @@
 
 \end{minipage}%
 \hfill%
-\begin{minipage}[t]{0.33\textwidth}
+\begin{minipage}[t]{0.37\textwidth}
 
 % ---------- SUMMARY ----------
 \section*{SUMMARY}
-Senior backend engineer with \textbf{4.5+ years} building \textbf{high-scale}, \textbf{real-time} gaming systems and \textbf{cloud-native} infrastructure on \textbf{AWS}. Proven in scaling traffic to \textbf{\textasciitilde{}600K req/min}, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through \textbf{strong observability and incident ownership}. Strong in \textbf{system design} and \textbf{performance optimization}.
+Senior backend engineer with \textbf{4.5+ years} building \textbf{high-scale}, \textbf{real-time} gaming systems and \textbf{cloud-native} infrastructure on \textbf{AWS}. Proven in scaling traffic to \textbf{\textasciitilde{}700K req/min}, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through \textbf{strong observability and incident ownership}. Strong in \textbf{system design} and \textbf{performance optimization}.
 
 % ---------- TECHNICAL SKILLS ----------
 \section*{TECHNICAL SKILLS}
-\textbf{Languages:} TypeScript, JavaScript, Python, SQL, Go
-
-\textbf{Backend:} Node.js, REST, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, CDC (Logical Replication), ETL
-
-\textbf{Databases:} PostgreSQL (RDS/Aurora), MySQL (Aurora), ClickHouse, MongoDB, Redis
-
-\textbf{AWS:} Lambda, EC2, EKS, S3, API Gateway, Kinesis, Firehose, Step Functions, Glue, Athena, SQS, Cognito, CloudWatch, Personalize
-
+\textbf{Languages:} TypeScript, JavaScript, Python, SQL, Go\\[2pt]
+\textbf{Backend:} Node.js, REST, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, CDC (Logical Replication), ETL\\[2pt]
+\textbf{Databases:} PostgreSQL (RDS/Aurora), MySQL (Aurora), ClickHouse, MongoDB, Redis\\[2pt]
+\textbf{AWS:} Lambda, EC2, EKS, S3, API Gateway, Kinesis, Firehose, Step Functions, Glue, Athena, SQS, Cognito, CloudWatch, Personalize\\[2pt]
 \textbf{DevOps \& Tools:} Docker, Kubernetes, Terraform (IaC), NGINX, Git, Airflow, CI/CD, Datadog, Locust, Percona, Tailscale
+
+% ---------- PERSONAL PROJECTS ----------
+\section*{PERSONAL PROJECTS}
+\href{https://github.com/NeuronEnix/ctx-router}{\textbf{ctx-router}} --- transport-agnostic API router; write handlers once and run them across HTTP, Lambda, SQS, and gRPC through one \texttt{ctx} pipeline, keeping transport concerns at the boundaries. \textit{TypeScript $\cdot$ \href{https://www.npmjs.com/package/ctx-router}{npm}}
+
+\href{https://github.com/NeuronEnix/ketsoc}{\textbf{ketsoc}} --- geographically distributed WebSocket layer built on \textbf{Cloudflare Durable Objects} with hibernation for low-cost, stateful connections at the edge. \textit{TypeScript}
+
+\href{https://github.com/NeuronEnix/homing-trade}{\textbf{homing-trade}} --- paper-trading lab for crypto futures: multi-strategy tournament, backtester, RL/AI strategies (Q-learning + Bull/Bear/Risk committee), daily risk controls + kill switch. \textit{Python}
 
 % ---------- EDUCATION ----------
 \section*{EDUCATION}

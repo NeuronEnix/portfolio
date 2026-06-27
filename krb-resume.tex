@@ -10,6 +10,9 @@
 \usepackage{hyperref}
 \usepackage{parskip}
 \usepackage{textcomp}
+% ATS: no hyphenation + ragged-right so keywords don't split and text extracts in order
+\usepackage[none]{hyphenat}
+\usepackage{ragged2e}
 
 % Colors
 \definecolor{accent}{HTML}{2BB673}
@@ -40,16 +43,17 @@
 \pagestyle{empty}
 
 \begin{document}
+\RaggedRight
 
 % ---------- HEADER ----------
 {\fontsize{26}{30}\selectfont Kaushik R Bangera}\\[2pt]
 {\color{accent}\large Senior Backend Engineer \textbar{} Distributed Systems \textbar{} Real-Time Systems \textbar{} AWS}\\[2pt]
 \href{mailto:kaushikrb909@gmail.com}{kaushikrb909@gmail.com} \textbar{} +91 9731176618\\
-\href{https://kaushikrb.com/}{kaushikrb.com} \textbar{} \href{https://github.com/NeuronEnix}{GitHub} \textbar{} \href{https://www.linkedin.com/in/kaushik-r-bangera/}{LinkedIn}
+\href{https://kaushikrb.com/?utm_source=resume}{kaushikrb.com} \textbar{} \href{https://github.com/NeuronEnix}{GitHub} \textbar{} \href{https://www.linkedin.com/in/kaushik-r-bangera/}{LinkedIn}
 
 % ---------- SUMMARY ----------
 \section*{SUMMARY}
-Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{high-scale}, \textbf{real-time} gaming systems and \textbf{cloud-native} infrastructure on \textbf{AWS}. Proven in scaling production traffic to \textbf{\textasciitilde{}600K requests/min}, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through \textbf{strong observability and incident ownership}. Strong in \textbf{system design}, \textbf{performance optimization}, and \textbf{execution leadership} in fast-paced environments.
+Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{high-scale}, \textbf{real-time} gaming systems and \textbf{cloud-native} infrastructure on \textbf{AWS}. Proven in scaling production traffic to \textbf{\textasciitilde{}700K requests/min}, designing fault-tolerant event pipelines, improving payments correctness, and driving reliability through \textbf{strong observability and incident ownership}. Strong in \textbf{system design}, \textbf{performance optimization}, and \textbf{execution leadership} in fast-paced environments.
 
 % ---------- TECHNICAL SKILLS ----------
 \section*{TECHNICAL SKILLS}
@@ -65,25 +69,26 @@ Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{
 \subsection*{{\color{accent}Jumbo --- New Delhi} \textnormal{-} Senior Backend Engineer (Founding Engineer)}
 \textbf{Aug 2024 -- Present}
 \begin{itemize}
-  \item Scaled the gaming platform to \textbf{\textasciitilde{}600,000 requests/min}, reliably handling \textbf{INR 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
-  \item Rewrote the \textbf{core transaction service in Go + gRPC}, reducing latency to single-digit ms while ensuring financial correctness through \textbf{atomicity, idempotency, running balances}, and integer-based currency normalization to \textbf{eliminate float drift}; built with \textbf{TDD and spec-driven development}.
+  \item Scaled the gaming platform from \textbf{\textasciitilde{}15K} to \textbf{\textasciitilde{}700K requests/min} for \textbf{\textasciitilde{}100K+ MAU} (80K+ weekly active), reliably handling \textbf{INR 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
+  \item Rewrote the \textbf{core transaction service in Go + gRPC}, cutting latency from \textbf{\textasciitilde{}150 ms} to \textbf{\textasciitilde{}50 ms} (gRPC + optimized queries) while ensuring financial correctness through \textbf{atomicity, idempotency, running balances}, and integer-based currency normalization to \textbf{eliminate float drift}; built with \textbf{TDD and spec-driven development}.
+  \item Eliminated \textbf{OOM crashes} in the Go transaction service by configuring \textbf{\texttt{GOMEMLIMIT}} (soft memory limit) so the garbage collector runs more aggressively as the heap nears the cap --- keeping memory stable under sustained load.
   \item Designed a \textbf{multi-currency wallet ledger} with \textbf{liability tracking} and automated \textbf{clawback reconciliation} for accurate, auditable balances across product lines.
   \item Built a \textbf{vendor-agnostic event pipeline}: services emit a single typed event that is batched, streamed through \textbf{Redis}, and \textbf{fanned out to multiple analytics vendors} (CleverTap, PostHog, OpenPanel, Matomo), with every event also persisted \textbf{first-party in ClickHouse} --- removing third-party lock-in and reducing new-vendor onboarding to a config change.
   \item Built a \textbf{CDC pipeline} using \textbf{Postgres logical replication} to stream production data into the analytics warehouse (\textbf{BigQuery}) in near real time, without loading the primary database.
   \item Owned the end-to-end \textbf{system architecture} for the in-house fantasy platform, defining \textbf{service boundaries, database schema, and API contracts} for scalable delivery.
   \item Built the \textbf{fantasy contest engine} --- concurrency-safe contest join, automated \textbf{reward calculation \& distribution}, live leaderboards, and refund/cancellation flows for abandoned or under-filled contests.
-  \item \textbf{Reduced backend load and CDN/edge-serving cost by \textasciitilde{}40--50\%} by moving low-change/high-read APIs \textbf{behind a CDN} with correct \textbf{cache-control} headers --- cached at the \textbf{Cloudflare edge} and on-device.
+  \item Reduced backend load and CDN/edge-serving cost by \textbf{\textasciitilde{}40--50\%} by moving low-change/high-read APIs \textbf{behind a CDN} with correct \textbf{cache-control} headers --- cached at the \textbf{Cloudflare edge} and on-device.
   \item Delivered an async \textbf{recharge + KYC orchestration layer} using a vendor-agnostic \textbf{Adapter Pattern}, reducing third-party dependency cost by \textbf{\textasciitilde{}70\%} through caching and retries.
   \item Developed a scalable \textbf{WebSocket platform (API Gateway + Redis)} for connection state, channel broadcasts, and WebSocket-based API calls.
   \item Built centralized \textbf{logging + trace correlation} (ClickHouse + Redis) using \textbf{Node.js async\_hooks}, reducing MTTR and surfacing performance bottlenecks across services.
   \item Improved \textbf{tail latency} and peak resilience through \textbf{API + DB bottleneck} analysis and \textbf{load testing} using \textbf{Locust, Percona, and ClickHouse}.
   \item Rolled out \textbf{Datadog} observability (APM, metrics, dashboards, and alerting) across all production services, improving incident detection and response.
-  \item Reclaimed \textbf{\textasciitilde{}50\% of database storage} using \textbf{pg\_repack} to rebuild bloated tables, reindex, and clear dead tuples, and upgraded \textbf{PostgreSQL to a new major version} --- improving cache efficiency and query performance.
-  \item Scaled database reads using \textbf{read replicas, RDS Proxy, and pgBouncer} connection pooling, and tuned \textbf{autoscaling} to absorb peak traffic without saturating the primary.
+  \item Reclaimed \textbf{\textasciitilde{}30\% of database storage} using \textbf{pg\_repack} to rebuild bloated tables, reindex, and clear dead tuples, and upgraded \textbf{PostgreSQL 17 $\rightarrow$ 18} --- improving cache efficiency and query performance.
+  \item Scaled database reads with \textbf{read replicas} and managed \textbf{high concurrent connection volume} via \textbf{RDS Proxy} and \textbf{pgBouncer} connection pooling, keeping the primary stable under peak load.
   \item Modernized AWS infrastructure and security using \textbf{AWS Organizations, CI/CD pipelines, and IAM Identity Center RBAC}, securing internal access via \textbf{Tailscale} and enforcing least-privilege operations.
   \item Strengthened system integrity with \textbf{OTP abuse prevention} and \textbf{multi-device concurrency conflict handling} for account safety and reliability.
   \item Served as the \textbf{primary escalation owner} for production incidents, leading debugging, \textbf{incident resolution}, and release execution while unblocking the team.
-  \item Built an \textbf{Aviator game} from scratch and scaled it to \textbf{\textasciitilde{}1,000 CCU}, improving engagement through stable gameplay loops and production hardening.
+  \item Built an \textbf{Aviator game} from scratch, scaling \textbf{0 $\rightarrow$ \textasciitilde{}1,000 CCU} through stable gameplay loops and production hardening.
   \item Performed \textbf{zero-downtime rotation} of \textbf{JWT signing keys} (\texttt{kid}-based) across all production services, with \textbf{no forced user logout}.
   \item Improved engineering velocity by using \textbf{AI-assisted tooling} and \textbf{MCP database workflows} for faster debugging, system insights, and architecture validation.
 \end{itemize}
@@ -91,7 +96,7 @@ Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{
 \subsection*{{\color{accent}Juego Studios --- Mangalore} \textnormal{-} Software Engineer (Backend / Cloud)}
 \textbf{Aug 2021 -- Jan 2024}
 \begin{itemize}
-  \item Built a resilient AWS ingestion platform using \textbf{Kinesis}, reducing projected infrastructure cost by \textbf{\textasciitilde{}66\%} while improving throughput and reliability.
+  \item Built a resilient AWS ingestion platform using \textbf{Kinesis}, cutting projected infrastructure cost \textbf{\$1,200 $\rightarrow$ \$400/mo} (\textasciitilde{}66\%) while improving throughput and reliability.
   \item Delivered end-to-end analytics pipelines using \textbf{AWS Glue ETL (PySpark) + Glue Catalog + Athena}, converting raw data to columnar \textbf{Parquet} to cut storage and reduce query latency from \textbf{\textasciitilde{}7s $\rightarrow$ 1--2s}.
   \item Researched and prototyped a \textbf{recommendation system} using \textbf{Amazon Personalize} for content and game discovery.
   \item Improved database scalability using \textbf{Aurora MySQL tuning}, \textbf{SQL transactions}, indexing, and \textbf{Redis caching}, achieving \textbf{\textasciitilde{}1,000 CCU and 1,000 RPS}.

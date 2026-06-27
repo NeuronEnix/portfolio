@@ -6,7 +6,7 @@
     <title>Kaushik R Bangera — Senior Backend Engineer | Distributed Systems, Real-Time, AWS</title>
     <meta
       name="description"
-      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~600K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo, ex-Juego Studios. Go, gRPC, Node.js, ClickHouse, Kubernetes."
+      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo, ex-Juego Studios. Go, gRPC, Node.js, ClickHouse, Kubernetes."
     />
     <meta name="author" content="Kaushik R Bangera" />
     <meta
@@ -23,7 +23,7 @@
     <meta property="og:title" content="Kaushik R Bangera — Senior Backend Engineer" />
     <meta
       property="og:description"
-      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~600K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
+      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
     />
     <meta property="og:url" content="https://kaushikrb.com/" />
     <meta property="og:locale" content="en_US" />
@@ -37,7 +37,7 @@
     <meta name="twitter:title" content="Kaushik R Bangera — Senior Backend Engineer" />
     <meta
       name="twitter:description"
-      content="Building high-scale, real-time backends. ~600K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
+      content="Building high-scale, real-time backends. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
     />
     <meta name="twitter:image" content="https://kaushikrb.com/asset/img/og-image.svg" />
     <meta name="twitter:image:alt" content="Kaushik R Bangera — Senior Backend Engineer" />
@@ -187,7 +187,7 @@
               </a>
             </div>
 
-            <a class="hero-resume" href="/asset/resume/kaushik-r-bangera-resume-2026-06-24.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
+            <a class="hero-resume" href="/asset/resume/kaushik-r-bangera-resume-2026-06-27.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
               <span class="hero-resume-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M12 4 V16 M6 11 L12 17 L18 11 M5 20 H19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -207,7 +207,7 @@
           <div class="hero-stats">
             <div class="badge-row">
               <div class="badge badge-stat">
-                <span class="stat-num">~600K</span>
+                <span class="stat-num">~700K</span>
                 <span class="stat-lab">req / min</span>
               </div>
               <div class="badge badge-stat">
@@ -227,6 +227,16 @@
               <div class="badge badge-stat">
                 <span class="stat-num">~2 TB</span>
                 <span class="stat-lab">ClickHouse managed</span>
+              </div>
+            </div>
+            <div class="badge-row">
+              <div class="badge badge-stat">
+                <span class="stat-num">~100K+</span>
+                <span class="stat-lab">MAU</span>
+              </div>
+              <div class="badge badge-stat">
+                <span class="stat-num">~80K+</span>
+                <span class="stat-lab">weekly active</span>
               </div>
             </div>
           </div>
@@ -284,7 +294,7 @@
           </h2>
           <div class="about-body">
             <p class="lead">
-              Systems that move <strong>~600K req/min</strong>, settle <strong>₹5 Cr of payment throughput at peak</strong>, and shepherd tens of crores in in-game transactions without losing a paisa to float drift.
+              Systems that move <strong>~700K req/min</strong>, settle <strong>₹5 Cr of payment throughput at peak</strong>, and shepherd tens of crores in in-game transactions without losing a paisa to float drift.
             </p>
             <p>
               4.5+ years of designing and scaling real-time systems on AWS. I care about correctness under load, clean service boundaries, and the kind of observability that turns a three-a.m. page into a five-minute fix.
@@ -496,15 +506,16 @@
           <div class="work-content">
             <span class="work-tag work-tag-yellow">Jumbo · Founding Engineer</span>
             <h3 class="work-title">
-              Building the gaming platform from <em>zero</em> to <em>~600K&nbsp;req/min</em>.
+              Building the gaming platform from <em>zero</em> to <em>~700K&nbsp;req/min</em>.
             </h3>
             <p class="work-meta">
               <a class="work-link" href="https://joinjumbo.com/" target="_blank" rel="noopener">joinjumbo.com</a>
               <span class="work-dot">·</span> New Delhi <span class="work-dot">·</span> Aug 2024 — Present
             </p>
             <ul class="work-bullets">
-              <li>Scaled the gaming platform to <strong>~600,000 req/min</strong>, reliably handling <strong>₹5&nbsp;Cr peak payment throughput</strong> and <strong>30&nbsp;Cr+ in-game transaction volume</strong>.</li>
-              <li>Rewrote the core transaction service in <strong>Go + gRPC</strong>, dropping latency to single-digit ms; engineered financial correctness via <strong>atomicity, idempotency, running balances</strong>, and integer currency normalization to <strong>eliminate float drift</strong>.</li>
+              <li>Scaled the gaming platform from <strong>~15K</strong> to <strong>~700K req/min</strong> for <strong>~100K+ MAU</strong> (80K+ weekly active), reliably handling <strong>₹5&nbsp;Cr peak payment throughput</strong> and <strong>30&nbsp;Cr+ in-game transaction volume</strong>.</li>
+              <li>Rewrote the core transaction service in <strong>Go + gRPC</strong>, cutting latency from <strong>~150 ms</strong> to <strong>~50 ms</strong> (gRPC + optimized queries); engineered financial correctness via <strong>atomicity, idempotency, running balances</strong>, and integer currency normalization to <strong>eliminate float drift</strong>.</li>
+              <li>Eliminated <strong>OOM crashes</strong> in the Go transaction service by setting <strong><code>GOMEMLIMIT</code></strong> (soft memory limit) — the garbage collector runs more aggressively as the heap nears the cap, keeping memory stable under sustained load.</li>
               <li>Designed a <strong>multi-currency wallet ledger</strong> with <strong>liability tracking</strong> and automated <strong>clawback reconciliation</strong> for accurate, auditable balances across product lines.</li>
               <li>Owned end-to-end system architecture for the in-house fantasy platform — service boundaries, schema, API contracts.</li>
               <li>Built the <strong>fantasy contest engine</strong> — concurrency-safe contest join, automated <strong>reward calculation &amp; distribution</strong>, live leaderboards, and refund / cancellation flows for abandoned or under-filled contests.</li>
@@ -516,13 +527,13 @@
               <li>Built centralized <strong>logging + trace correlation</strong> on Node.js <code>async_hooks</code>, reducing MTTR and surfacing perf bottlenecks across services.</li>
               <li>Rolled out <strong>Datadog</strong> observability (APM, metrics, dashboards, alerting) across all production services, improving incident detection and response.</li>
               <li>Improved <strong>tail latency</strong> and peak resilience through API + DB bottleneck analysis and <strong>load testing</strong> with Locust and Percona.</li>
-              <li>Reclaimed <strong>~50% of database storage</strong> with <strong>pg_repack</strong> (table rebuilds, reindex, dead-tuple cleanup) and upgraded <strong>PostgreSQL to a new major version</strong>.</li>
-              <li>Scaled database reads with <strong>read replicas, RDS Proxy, and pgBouncer</strong> pooling, and tuned autoscaling to absorb peak traffic without saturating the primary.</li>
+              <li>Reclaimed <strong>~30% of database storage</strong> with <strong>pg_repack</strong> (table rebuilds, reindex, dead-tuple cleanup) and upgraded <strong>PostgreSQL 17 → 18</strong>.</li>
+              <li>Scaled database reads with <strong>read replicas</strong> and managed <strong>high concurrent connection volume</strong> via <strong>RDS Proxy</strong> + <strong>pgBouncer</strong> pooling, keeping the primary stable under peak load.</li>
               <li>Modernized AWS infra with <strong>AWS Organizations</strong>, CI/CD pipelines, <strong>IAM Identity Center RBAC</strong>, and <strong>Tailscale</strong>-secured internal access.</li>
               <li>Performed <strong>zero-downtime rotation of JWT signing keys</strong> (<code>kid</code>-based) across all production services, with no forced user logout.</li>
               <li>Strengthened account safety with <strong>OTP-abuse prevention</strong> and <strong>multi-device concurrency conflict handling</strong>.</li>
               <li><strong>Primary escalation owner</strong> for production incidents — debugging, resolution, release execution, unblocking the team.</li>
-              <li>Built an <strong>Aviator</strong> game from scratch and scaled it to <strong>~1,000 CCU</strong>; improved velocity using <strong>AI-assisted tooling</strong> and MCP database workflows.</li>
+              <li>Built an <strong>Aviator</strong> game from scratch, scaling <strong>0 → ~1,000 CCU</strong>; improved velocity using <strong>AI-assisted tooling</strong> and MCP database workflows.</li>
             </ul>
           </div>
           <div class="work-visual work-visual-jumbo" aria-hidden="true">
@@ -535,9 +546,11 @@
               <div class="poster-bottom">
                 <p class="poster-meta">New Delhi <span class="poster-meta-dot">·</span> Aug 2024 — Present</p>
                 <div class="poster-stats">
-                  <div><strong>~600K</strong><span>req / min</span></div>
+                  <div><strong>~700K</strong><span>req / min</span></div>
                   <div><strong>₹5&nbsp;Cr</strong><span>peak payments</span></div>
                   <div><strong>30&nbsp;Cr+</strong><span>txn volume</span></div>
+                  <div><strong>~100K+</strong><span>MAU</span></div>
+                  <div><strong>80K+</strong><span>weekly active</span></div>
                 </div>
               </div>
               <div class="poster-pulse" aria-hidden="true"></div>
@@ -575,7 +588,7 @@
               <span class="work-dot">·</span> Mangalore <span class="work-dot">·</span> Aug 2021 — Jan 2024
             </p>
             <ul class="work-bullets">
-              <li>Built a resilient AWS ingestion platform using <strong>Kinesis</strong>, cutting projected infra cost by <strong>~66%</strong> while improving throughput.</li>
+              <li>Built a resilient AWS ingestion platform using <strong>Kinesis</strong>, cutting projected infra cost <strong>$1,200 → $400/mo</strong> (~66%) while improving throughput.</li>
               <li>Delivered analytics pipelines using <strong>Glue ETL (PySpark) + Glue Catalog + Athena</strong>, converting raw data to columnar <strong>Parquet</strong> to cut storage and query latency from <strong>~7s → 1–2s</strong>.</li>
               <li>Improved DB scalability via <strong>Aurora MySQL tuning</strong>, SQL transactions, indexing, and <strong>Redis caching</strong> — sustained <strong>~1,000 CCU and 1,000 RPS</strong>.</li>
               <li>Provisioned cloud infra with <strong>Terraform</strong> for reproducible deployments.</li>
