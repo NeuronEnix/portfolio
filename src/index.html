@@ -3,27 +3,27 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kaushik R Bangera — Senior Backend Engineer | Distributed Systems, Real-Time, AWS</title>
+    <title>Kaushik R Bangera — Senior Software Engineer (Founding Engineer) | Distributed Systems, AWS</title>
     <meta
       name="description"
-      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo, ex-Juego Studios. Go, gRPC, Node.js, ClickHouse, Kubernetes."
+      content="Senior software engineer (founding engineer) building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo, ex-Juego Studios. Go, gRPC, Node.js, ClickHouse, Kubernetes."
     />
     <meta name="author" content="Kaushik R Bangera" />
     <meta
       name="keywords"
-      content="Kaushik R Bangera, senior backend engineer, distributed systems, real-time systems, AWS, Go, gRPC, Node.js, ClickHouse, Cloudflare Workers, Kubernetes, system design, founding engineer, Jumbo, Juego Studios, payments engineering, WebSocket, Redis"
+      content="Kaushik R Bangera, senior software engineer, founding engineer, backend engineer, distributed systems, real-time systems, AWS, Go, gRPC, Node.js, ClickHouse, Cloudflare Workers, Kubernetes, system design, Jumbo, Juego Studios, payments engineering, WebSocket, Redis"
     />
-    <meta name="theme-color" content="#E8E5DD" />
-    <meta name="color-scheme" content="light" />
+    <meta name="theme-color" content="#06070F" />
+    <meta name="color-scheme" content="dark" />
 
     <link rel="canonical" href="https://kaushikrb.com/" />
 
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Kaushik R Bangera" />
-    <meta property="og:title" content="Kaushik R Bangera — Senior Backend Engineer" />
+    <meta property="og:title" content="Kaushik R Bangera — Senior Software Engineer (Founding Engineer)" />
     <meta
       property="og:description"
-      content="Senior backend engineer building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
+      content="Senior software engineer (founding engineer) building high-scale, real-time gaming systems on AWS. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
     />
     <meta property="og:url" content="https://kaushikrb.com/" />
     <meta property="og:locale" content="en_US" />
@@ -31,16 +31,16 @@
     <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
-    <meta property="og:image:alt" content="Kaushik R Bangera — Senior Backend Engineer · Distributed Systems · AWS" />
+    <meta property="og:image:alt" content="Kaushik R Bangera — Senior Software Engineer (Founding Engineer) · Distributed Systems · AWS" />
 
     <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content="Kaushik R Bangera — Senior Backend Engineer" />
+    <meta name="twitter:title" content="Kaushik R Bangera — Senior Software Engineer (Founding Engineer)" />
     <meta
       name="twitter:description"
       content="Building high-scale, real-time backends. ~700K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
     />
     <meta name="twitter:image" content="https://kaushikrb.com/asset/img/og-image.svg" />
-    <meta name="twitter:image:alt" content="Kaushik R Bangera — Senior Backend Engineer" />
+    <meta name="twitter:image:alt" content="Kaushik R Bangera — Senior Software Engineer (Founding Engineer)" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
@@ -50,10 +50,10 @@
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=50" />
+    <link rel="stylesheet" href="styles.css?v=56" />
 
     <script type="application/ld+json">
       {
@@ -63,8 +63,8 @@
         "alternateName": "Kaushik",
         "url": "https://kaushikrb.com/",
         "image": "https://kaushikrb.com/asset/img/og-image.svg",
-        "jobTitle": "Senior Backend Engineer",
-        "description": "Senior backend engineer building high-scale, real-time gaming systems and cloud-native infrastructure on AWS.",
+        "jobTitle": "Senior Software Engineer (Founding Engineer)",
+        "description": "Senior software engineer and founding engineer building high-scale, real-time gaming systems and cloud-native infrastructure on AWS.",
         "email": "mailto:kaushikrb909@gmail.com",
         "telephone": "+91-9731176618",
         "worksFor": {
@@ -127,159 +127,149 @@
   </script>
   </head>
   <body>
+    <!-- Ambient layers -->
+    <canvas class="net" id="net" aria-hidden="true"></canvas>
+    <div class="grain" aria-hidden="true"></div>
+    <div class="scan" aria-hidden="true"></div>
+
+    <!-- Scroll progress -->
+    <div class="scroll-rail" aria-hidden="true"><span class="scroll-bar" id="scrollBar"></span></div>
+
+    <!-- Section dot-rail -->
+    <nav class="rail" id="rail" aria-label="Section navigation">
+      <a href="#hero"><span class="rail-n">00</span><span class="rail-d"></span><span class="rail-l">Home</span></a>
+      <a href="#about"><span class="rail-n">01</span><span class="rail-d"></span><span class="rail-l">About</span></a>
+      <a href="#skills"><span class="rail-n">02</span><span class="rail-d"></span><span class="rail-l">Skills</span></a>
+      <a href="#ai"><span class="rail-n">03</span><span class="rail-d"></span><span class="rail-l">AI</span></a>
+      <a href="#blogs"><span class="rail-n">04</span><span class="rail-d"></span><span class="rail-l">Blogs</span></a>
+      <a href="#work"><span class="rail-n">05</span><span class="rail-d"></span><span class="rail-l">Work</span></a>
+      <a href="#contact"><span class="rail-n">06</span><span class="rail-d"></span><span class="rail-l">Contact</span></a>
+    </nav>
+
     <header class="topbar">
-      <a class="brand" href="#top" aria-label="Kaushik R Bangera home">
+      <a class="brand magnetic" data-mag="0.2" href="#hero" aria-label="Kaushik R Bangera home">
         <span class="brand-mark">
-          <svg viewBox="0 0 36 36" width="36" height="36" aria-hidden="true">
+          <svg viewBox="0 0 36 36" width="34" height="34" aria-hidden="true">
             <rect x="1" y="1" width="34" height="34" rx="8" fill="none" stroke="currentColor" stroke-width="2" />
             <path d="M11 9 V27 M11 18 L23 9 M14.5 15.5 L25 27" stroke="currentColor" stroke-width="2.6" stroke-linecap="round" stroke-linejoin="round" fill="none" />
           </svg>
         </span>
       </a>
       <nav class="topbar-nav" aria-label="Primary">
-        <a href="#about">About me</a>
-        <a href="#skills">Skills</a>
-        <a href="#ai">AI</a>
-        <a href="#blogs">Blogs</a>
-        <a href="#work">Work</a>
-        <a class="topbar-cta" href="#contact">Contact me</a>
+        <a href="#about">about</a>
+        <a href="#skills">skills</a>
+        <a href="#ai">ai</a>
+        <a href="#blogs">blogs</a>
+        <a href="#work">work</a>
+        <a class="topbar-cta magnetic" data-mag="0.25" href="#contact">contact</a>
       </nav>
     </header>
 
     <!-- ────────────────────────────────────────────────────────────
-         Hero: split-screen (light left, dark right) with diagonal cut
+         Hero: live telemetry console
          ──────────────────────────────────────────────────────────── -->
-    <section class="hero">
-      <div class="hero-bg-dark" aria-hidden="true"></div>
-
+    <section class="hero" id="hero">
       <div class="hero-grid">
         <div class="hero-content">
-          <p class="hero-greet">Hi, I am</p>
+          <p class="hero-eyebrow"><span class="caret"></span> Senior Software Engineer (Founding Engineer)</p>
           <h1 class="hero-name">
-            Kaushik R<br />Bangera<span class="hero-dot">.</span>
+            <span class="scramble" data-scramble data-text="Kaushik R"></span>
+            <span class="scramble line2" data-scramble data-text="Bangera"></span><span class="hero-dot">_</span>
           </h1>
           <p class="hero-role">
-            Senior Backend Engineer <span class="hero-slash">/</span> <span class="hero-role-em">Founding Engineer at Jumbo</span>
+            At <span class="at">Jumbo</span>, I build the quiet backends behind <span class="hl">700K&nbsp;req/min</span> of real-time gaming — correct under load, observable, and cheap to run.
           </p>
 
-          <div class="hero-socials" aria-label="Social links">
-            <div class="social" data-pop-text="kaushikrb909@gmail.com" data-pop-copy="kaushikrb909@gmail.com">
-              <a class="social-btn" href="mailto:kaushikrb909@gmail.com" aria-label="Email Kaushik">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <path d="M16.5 12a4.5 4.5 0 1 1-3-4.24M16.5 7.5v5a2 2 0 0 0 4 0V12a8.5 8.5 0 1 0-3.4 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </a>
-            </div>
-
-<div class="social" data-pop-text="github.com/NeuronEnix" data-pop-copy="https://github.com/NeuronEnix">
-              <a class="social-btn" href="https://github.com/NeuronEnix" target="_blank" rel="noopener" aria-label="GitHub profile">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85.004 1.7.115 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
-                </svg>
-              </a>
-            </div>
-
-            <div class="social" data-pop-text="linkedin.com/in/kaushik-r-bangera" data-pop-copy="https://www.linkedin.com/in/kaushik-r-bangera/">
-              <a class="social-btn" href="https://www.linkedin.com/in/kaushik-r-bangera/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
-                <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                  <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8.02h4.56V22H.22V8.02ZM8.07 8.02h4.37v1.91h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.55c0-1.56-.03-3.57-2.17-3.57-2.17 0-2.5 1.7-2.5 3.46V22H8.07V8.02Z" />
-                </svg>
-              </a>
-            </div>
-
-            <a class="hero-resume" href="/asset/resume/kaushik-r-bangera-resume-2026-06-27.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
-              <span class="hero-resume-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" width="18" height="18">
-                  <path d="M12 4 V16 M6 11 L12 17 L18 11 M5 20 H19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
-                </svg>
-              </span>
-              <span class="hero-resume-text">Download Resume</span>
+          <div class="hero-actions">
+            <a class="btn-primary magnetic" data-mag="0.18" data-mag-max="9" href="/asset/resume/kaushik-r-bangera-resume-2026-06-27.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M12 4 V16 M6 11 L12 17 L18 11 M5 20 H19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
+              </svg>
+              <span>Download Resume</span>
             </a>
 
-            <div class="social-pop" id="socialPop" role="tooltip" aria-live="polite">
-              <button class="social-pop-copy" type="button" data-copy="" aria-label="Copy">Copy</button>
-              <a class="social-pop-link" id="socialPopLink" href="#" target="_blank" rel="noopener">
-                <span class="social-pop-text"></span>
-              </a>
+            <div class="hero-socials" aria-label="Social links">
+              <div class="social" data-pop-text="kaushikrb909@gmail.com" data-pop-copy="kaushikrb909@gmail.com">
+                <a class="social-btn" href="mailto:kaushikrb909@gmail.com" aria-label="Email Kaushik">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path d="M16.5 12a4.5 4.5 0 1 1-3-4.24M16.5 7.5v5a2 2 0 0 0 4 0V12a8.5 8.5 0 1 0-3.4 6.8" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" />
+                  </svg>
+                </a>
+              </div>
+              <div class="social" data-pop-text="github.com/NeuronEnix" data-pop-copy="https://github.com/NeuronEnix">
+                <a class="social-btn" href="https://github.com/NeuronEnix" target="_blank" rel="noopener" aria-label="GitHub profile">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85.004 1.7.115 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
+                  </svg>
+                </a>
+              </div>
+              <div class="social" data-pop-text="linkedin.com/in/kaushik-r-bangera" data-pop-copy="https://www.linkedin.com/in/kaushik-r-bangera/">
+                <a class="social-btn" href="https://www.linkedin.com/in/kaushik-r-bangera/" target="_blank" rel="noopener" aria-label="LinkedIn profile">
+                  <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
+                    <path fill="currentColor" d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5ZM.22 8.02h4.56V22H.22V8.02ZM8.07 8.02h4.37v1.91h.06c.61-1.15 2.1-2.36 4.32-2.36 4.62 0 5.47 3.04 5.47 6.99V22h-4.56v-6.55c0-1.56-.03-3.57-2.17-3.57-2.17 0-2.5 1.7-2.5 3.46V22H8.07V8.02Z" />
+                  </svg>
+                </a>
+              </div>
+
+              <div class="social-pop" id="socialPop" role="tooltip" aria-live="polite">
+                <button class="social-pop-copy" type="button" data-copy="" aria-label="Copy">Copy</button>
+                <a class="social-pop-link" id="socialPopLink" href="#" target="_blank" rel="noopener">
+                  <span class="social-pop-text"></span>
+                </a>
+              </div>
             </div>
           </div>
 
-          <div class="hero-stats">
-            <div class="badge-row">
-              <div class="badge badge-stat">
-                <span class="stat-num">~700K</span>
-                <span class="stat-lab">req / min</span>
-              </div>
-              <div class="badge badge-stat">
-                <span class="stat-num">~30 Cr+</span>
-                <span class="stat-lab">in-game txn / day</span>
-              </div>
-              <div class="badge badge-stat">
-                <span class="stat-num">~₹5 Cr</span>
-                <span class="stat-lab">peak payment / day</span>
-              </div>
-            </div>
-            <div class="badge-row">
-              <div class="badge badge-stat">
-                <span class="stat-num">~200 GB</span>
-                <span class="stat-lab">Postgres managed</span>
-              </div>
-              <div class="badge badge-stat">
-                <span class="stat-num">~2 TB</span>
-                <span class="stat-lab">ClickHouse managed</span>
-              </div>
-            </div>
-            <div class="badge-row">
-              <div class="badge badge-stat">
-                <span class="stat-num">~100K+</span>
-                <span class="stat-lab">MAU</span>
-              </div>
-              <div class="badge badge-stat">
-                <span class="stat-num">~80K+</span>
-                <span class="stat-lab">weekly active</span>
-              </div>
-            </div>
-          </div>
         </div>
 
-        <div class="hero-portrait">
-          <div class="portrait-wrap">
-            <div class="portrait-circle" aria-hidden="true"></div>
-            <div class="portrait-frame">
-              <div class="portrait-yellow" aria-hidden="true"></div>
-              <img class="portrait-img" src="/asset/img/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
-            </div>
+        <aside class="hero-side">
+          <figure class="node-card tilt">
+            <span class="nc-corner nc-tl"></span>
+            <span class="nc-corner nc-tr"></span>
+            <span class="nc-corner nc-bl"></span>
+            <span class="nc-corner nc-br"></span>
+            <img class="nc-img" src="/asset/img/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
+            <span class="nc-grid" aria-hidden="true"></span>
+            <span class="nc-scan" aria-hidden="true"></span>
+          </figure>
 
-            <div class="snapshot-card">
-              <span class="snapshot-yoe">4.5+ YoE</span>
-              <ul class="snapshot-list">
-                <li class="snapshot-row">
-                  <a class="snapshot-tile snapshot-co snapshot-co-jumbo" href="https://joinjumbo.com/" target="_blank" rel="noopener" aria-label="Jumbo website">
-                    <img src="/asset/img/company_jumbo.png" alt="Jumbo" width="325" height="80" decoding="async" />
-                  </a>
-                  <a class="snapshot-title" href="#work-jumbo">Founding Engineer</a>
-                  <span class="snapshot-online" aria-label="Currently working here" title="Currently here"></span>
-                </li>
-                <li class="snapshot-row">
-                  <a class="snapshot-tile snapshot-co" href="https://www.juegostudio.com/" target="_blank" rel="noopener" aria-label="Juego Studios website">
-                    <img src="/asset/img/company_juego.png" alt="Juego Studios" width="300" height="137" decoding="async" />
-                  </a>
-                  <a class="snapshot-title" href="#work-juego">Software Engineer</a>
-                </li>
-                <li class="snapshot-row">
-                  <span class="snapshot-tile snapshot-pin" aria-label="Based in">
-                    <svg viewBox="0 0 24 24" width="20" height="20" aria-hidden="true">
-                      <path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
-                      <circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9" />
-                    </svg>
-                  </span>
-                  <span class="snapshot-val">New Delhi <span class="snapshot-sep">·</span> Bangalore <span class="snapshot-sep">·</span> Mangalore</span>
-                </li>
-              </ul>
+          <div class="snap">
+            <div class="snap-head">
+              <span>// career.snapshot</span>
+              <span class="count" data-to="4.5" data-suffix="+ yoe">4.5</span>
+            </div>
+            <a class="snap-row" href="#work-jumbo">
+              <span class="snap-logo snap-logo-jumbo"><img src="/asset/img/company_jumbo.png" alt="Jumbo" width="325" height="80" decoding="async" /></span>
+              <span class="snap-meta"><b>Senior Software Engineer</b><i>Founding Engineer · Jumbo</i></span>
+              <span class="snap-live" aria-label="Currently working here" title="Currently here"></span>
+            </a>
+            <a class="snap-row" href="#work-juego">
+              <span class="snap-logo"><img src="/asset/img/company_juego.png" alt="Juego Studios" width="300" height="137" decoding="async" /></span>
+              <span class="snap-meta"><b>Software Engineer</b><i>Juego Studios</i></span>
+            </a>
+            <div class="snap-row snap-loc">
+              <span class="snap-logo snap-pin" aria-label="Based in">
+                <svg viewBox="0 0 24 24" width="18" height="18" aria-hidden="true">
+                  <path d="M12 22s7-6.2 7-12a7 7 0 0 0-14 0c0 5.8 7 12 7 12Z" fill="none" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round" />
+                  <circle cx="12" cy="10" r="2.6" fill="none" stroke="currentColor" stroke-width="1.9" />
+                </svg>
+              </span>
+              <span class="snap-meta"><b>New Delhi · Bangalore · Mangalore</b><i>based in india</i></span>
             </div>
           </div>
-        </div>
+        </aside>
       </div>
+
+      <div class="metrics">
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="700" data-suffix="K">700</span><span class="metric-l">req / min</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="30" data-suffix=" Cr+">30</span><span class="metric-l">in-game txn / day</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~₹" data-to="5" data-suffix=" Cr">5</span><span class="metric-l">peak payments / day</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="200" data-suffix=" GB">200</span><span class="metric-l">postgres managed</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="2" data-suffix=" TB">2</span><span class="metric-l">clickhouse managed</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="100" data-suffix="K+">100</span><span class="metric-l">MAU</span></div>
+        <div class="metric"><span class="metric-v count" data-prefix="~" data-to="80" data-suffix="K+">80</span><span class="metric-l">weekly active</span></div>
+      </div>
+
     </section>
 
     <!-- ────────────────────────────────────────────────────────────
@@ -323,7 +313,13 @@
               </svg>
             </div>
             <h3 class="skill-title">Languages</h3>
-            <p class="skill-list">TypeScript · JavaScript · Go · Python · SQL</p>
+            <ul class="skill-tags">
+              <li class="skill-tag">TypeScript</li>
+              <li class="skill-tag">JavaScript</li>
+              <li class="skill-tag">Go</li>
+              <li class="skill-tag">Python</li>
+              <li class="skill-tag">SQL</li>
+            </ul>
           </article>
 
           <article class="skill-card">
@@ -338,7 +334,18 @@
               </svg>
             </div>
             <h3 class="skill-title">Backend</h3>
-            <p class="skill-list">Node.js · gRPC · REST · WebSockets · Microservices · Distributed Systems · Event-driven · CDC · ETL · System design</p>
+            <ul class="skill-tags">
+              <li class="skill-tag">Node.js</li>
+              <li class="skill-tag">gRPC</li>
+              <li class="skill-tag">REST</li>
+              <li class="skill-tag">WebSockets</li>
+              <li class="skill-tag">Microservices</li>
+              <li class="skill-tag">Distributed Systems</li>
+              <li class="skill-tag">Event-driven</li>
+              <li class="skill-tag">CDC</li>
+              <li class="skill-tag">ETL</li>
+              <li class="skill-tag">System Design</li>
+            </ul>
           </article>
 
           <article class="skill-card">
@@ -350,7 +357,13 @@
               </svg>
             </div>
             <h3 class="skill-title">Databases</h3>
-            <p class="skill-list">PostgreSQL <span class="paren">(RDS / Aurora)</span> · MySQL <span class="paren">(Aurora)</span> · ClickHouse · MongoDB · Redis</p>
+            <ul class="skill-tags">
+              <li class="skill-tag">PostgreSQL <span class="paren">RDS / Aurora</span></li>
+              <li class="skill-tag">MySQL <span class="paren">Aurora</span></li>
+              <li class="skill-tag">ClickHouse</li>
+              <li class="skill-tag">MongoDB</li>
+              <li class="skill-tag">Redis</li>
+            </ul>
           </article>
 
           <article class="skill-card">
@@ -360,7 +373,22 @@
               </svg>
             </div>
             <h3 class="skill-title">AWS Cloud</h3>
-            <p class="skill-list">Lambda · EC2 · EKS · S3 · API Gateway · Kinesis · Firehose · Step Functions · Glue · Athena · SQS · Cognito · CloudWatch · Personalize</p>
+            <ul class="skill-tags">
+              <li class="skill-tag">Lambda</li>
+              <li class="skill-tag">EC2</li>
+              <li class="skill-tag">EKS</li>
+              <li class="skill-tag">S3</li>
+              <li class="skill-tag">API Gateway</li>
+              <li class="skill-tag">Kinesis</li>
+              <li class="skill-tag">Firehose</li>
+              <li class="skill-tag">Step Functions</li>
+              <li class="skill-tag">Glue</li>
+              <li class="skill-tag">Athena</li>
+              <li class="skill-tag">SQS</li>
+              <li class="skill-tag">Cognito</li>
+              <li class="skill-tag">CloudWatch</li>
+              <li class="skill-tag">Personalize</li>
+            </ul>
           </article>
 
           <article class="skill-card">
@@ -371,7 +399,19 @@
               </svg>
             </div>
             <h3 class="skill-title">DevOps &amp; Tools</h3>
-            <p class="skill-list">Docker · Kubernetes · Terraform · NGINX · Airflow · CI/CD · Datadog · Locust · Percona · Tailscale · Git</p>
+            <ul class="skill-tags">
+              <li class="skill-tag">Docker</li>
+              <li class="skill-tag">Kubernetes</li>
+              <li class="skill-tag">Terraform</li>
+              <li class="skill-tag">NGINX</li>
+              <li class="skill-tag">Airflow</li>
+              <li class="skill-tag">CI/CD</li>
+              <li class="skill-tag">Datadog</li>
+              <li class="skill-tag">Locust</li>
+              <li class="skill-tag">Percona</li>
+              <li class="skill-tag">Tailscale</li>
+              <li class="skill-tag">Git</li>
+            </ul>
           </article>
         </div>
       </div>
@@ -411,7 +451,14 @@
             <h3 class="skill-title">MCP <span class="ai-title-sub">Model Context Protocol</span></h3>
             <p class="skill-list">Heavily integrated into my daily workflow for incident investigation, debugging, operational insights and cross-system analysis — for faster decisions.</p>
             <p class="ai-meta-label">Connected to</p>
-            <p class="ai-meta-list">AWS · Datadog · Databases · GitHub · Slack · Linear</p>
+            <ul class="skill-tags ai-meta-tags">
+              <li class="skill-tag">AWS</li>
+              <li class="skill-tag">Datadog</li>
+              <li class="skill-tag">Databases</li>
+              <li class="skill-tag">GitHub</li>
+              <li class="skill-tag">Slack</li>
+              <li class="skill-tag">Linear</li>
+            </ul>
           </article>
 
           <article class="skill-card ai-card">
@@ -504,7 +551,7 @@
         <!-- Jumbo -->
         <article id="work-jumbo" class="work-card work-text-left">
           <div class="work-content">
-            <span class="work-tag work-tag-yellow">Jumbo · Founding Engineer</span>
+            <span class="work-tag work-tag-yellow">Jumbo · Senior Software Engineer (Founding Engineer)</span>
             <h3 class="work-title">
               Building the gaming platform from <em>zero</em> to <em>~700K&nbsp;req/min</em>.
             </h3>
@@ -512,29 +559,34 @@
               <a class="work-link" href="https://joinjumbo.com/" target="_blank" rel="noopener">joinjumbo.com</a>
               <span class="work-dot">·</span> New Delhi <span class="work-dot">·</span> Aug 2024 — Present
             </p>
-            <ul class="work-bullets">
+            <ul class="work-bullets" id="jumboBullets">
               <li>Scaled the gaming platform from <strong>~15K</strong> to <strong>~700K req/min</strong> for <strong>~100K+ MAU</strong> (80K+ weekly active), reliably handling <strong>₹5&nbsp;Cr peak payment throughput</strong> and <strong>30&nbsp;Cr+ in-game transaction volume</strong>.</li>
-              <li>Rewrote the core transaction service in <strong>Go + gRPC</strong>, cutting latency from <strong>~150 ms</strong> to <strong>~50 ms</strong> (gRPC + optimized queries); engineered financial correctness via <strong>atomicity, idempotency, running balances</strong>, and integer currency normalization to <strong>eliminate float drift</strong>.</li>
-              <li>Eliminated <strong>OOM crashes</strong> in the Go transaction service by setting <strong><code>GOMEMLIMIT</code></strong> (soft memory limit) — the garbage collector runs more aggressively as the heap nears the cap, keeping memory stable under sustained load.</li>
+              <li>Rewrote the core transaction service in <strong>Go + gRPC</strong>, cutting latency from <strong>~150 ms</strong> to <strong>~50 ms</strong>; engineered financial correctness via <strong>atomicity, idempotency, running balances</strong>, and integer currency normalization to <strong>eliminate float drift</strong>.</li>
+              <li>Owned <strong>end-to-end system architecture</strong> for the in-house <strong>cricket fantasy game</strong> (like Dream11) — service boundaries, schema, and API contracts.</li>
               <li>Designed a <strong>multi-currency wallet ledger</strong> with <strong>liability tracking</strong> and automated <strong>clawback reconciliation</strong> for accurate, auditable balances across product lines.</li>
-              <li>Owned end-to-end system architecture for the in-house fantasy platform — service boundaries, schema, API contracts.</li>
-              <li>Built the <strong>fantasy contest engine</strong> — concurrency-safe contest join, automated <strong>reward calculation &amp; distribution</strong>, live leaderboards, and refund / cancellation flows for abandoned or under-filled contests.</li>
-              <li>Built a <strong>vendor-agnostic event pipeline</strong>: one typed event is batched, streamed via <strong>Redis</strong>, and <strong>fanned out to multiple analytics vendors</strong> (CleverTap, PostHog, Matomo) while persisted <strong>first-party in ClickHouse</strong> — removing third-party lock-in and making new-vendor onboarding a config change.</li>
+              <li>Built the <strong>fantasy contest engine</strong> — concurrency-safe contest join, automated <strong>reward calculation &amp; distribution</strong>, live leaderboards, and refund / cancellation flows.</li>
+              <li>Built a <strong>vendor-agnostic event pipeline</strong>: one typed event is batched, streamed via <strong>Redis</strong>, and <strong>fanned out to multiple analytics vendors</strong> (CleverTap, PostHog, Matomo) while persisted <strong>first-party in ClickHouse</strong> — removing third-party lock-in.</li>
               <li>Built a <strong>CDC pipeline</strong> using <strong>Postgres logical replication</strong> to stream production data into <strong>BigQuery</strong> in near real time, without loading the primary database.</li>
               <li>Delivered a scalable <strong>WebSocket platform</strong> (API Gateway + Redis) for connection state, channel broadcasts, and WS-based API calls.</li>
-              <li>Cut backend load and CDN cost by <strong>~40–50%</strong> by moving low-change / high-read APIs behind a CDN with correct cache-control and invalidation.</li>
-              <li>Built an async recharge + KYC orchestration layer with a vendor-agnostic Adapter Pattern, reducing third-party cost by <strong>~70%</strong>.</li>
-              <li>Built centralized <strong>logging + trace correlation</strong> on Node.js <code>async_hooks</code>, reducing MTTR and surfacing perf bottlenecks across services.</li>
               <li>Rolled out <strong>Datadog</strong> observability (APM, metrics, dashboards, alerting) across all production services, improving incident detection and response.</li>
-              <li>Improved <strong>tail latency</strong> and peak resilience through API + DB bottleneck analysis and <strong>load testing</strong> with Locust and Percona.</li>
-              <li>Reclaimed <strong>~30% of database storage</strong> with <strong>pg_repack</strong> (table rebuilds, reindex, dead-tuple cleanup) and upgraded <strong>PostgreSQL 17 → 18</strong>.</li>
-              <li>Scaled database reads with <strong>read replicas</strong> and managed <strong>high concurrent connection volume</strong> via <strong>RDS Proxy</strong> + <strong>pgBouncer</strong> pooling, keeping the primary stable under peak load.</li>
-              <li>Modernized AWS infra with <strong>AWS Organizations</strong>, CI/CD pipelines, <strong>IAM Identity Center RBAC</strong>, and <strong>Tailscale</strong>-secured internal access.</li>
-              <li>Performed <strong>zero-downtime rotation of JWT signing keys</strong> (<code>kid</code>-based) across all production services, with no forced user logout.</li>
-              <li>Strengthened account safety with <strong>OTP-abuse prevention</strong> and <strong>multi-device concurrency conflict handling</strong>.</li>
-              <li><strong>Primary escalation owner</strong> for production incidents — debugging, resolution, release execution, unblocking the team.</li>
-              <li>Built an <strong>Aviator</strong> game from scratch, scaling <strong>0 → ~1,000 CCU</strong>; improved velocity using <strong>AI-assisted tooling</strong> and MCP database workflows.</li>
+              <li><strong>Primary escalation owner</strong> for production incidents — debugging, resolution, release execution, and unblocking the team.</li>
+
+              <li class="wb-extra">Built an async recharge + KYC orchestration layer with a vendor-agnostic Adapter Pattern, reducing third-party cost by <strong>~70%</strong>.</li>
+              <li class="wb-extra">Cut backend load and CDN cost by <strong>~40–50%</strong> by moving low-change / high-read APIs behind a CDN with correct cache-control and invalidation.</li>
+              <li class="wb-extra">Scaled database reads with <strong>read replicas</strong> and managed high concurrent connection volume via <strong>RDS Proxy</strong> + <strong>pgBouncer</strong> pooling, keeping the primary stable under peak load.</li>
+              <li class="wb-extra">Reclaimed <strong>~30% of database storage</strong> with <strong>pg_repack</strong> (table rebuilds, reindex, dead-tuple cleanup) and upgraded <strong>PostgreSQL 17 → 18</strong>.</li>
+              <li class="wb-extra">Improved <strong>tail latency</strong> and peak resilience through API + DB bottleneck analysis and <strong>load testing</strong> with Locust and Percona.</li>
+              <li class="wb-extra">Eliminated <strong>OOM crashes</strong> in the Go transaction service by setting <strong><code>GOMEMLIMIT</code></strong> — the GC runs more aggressively as the heap nears the cap, keeping memory stable under load.</li>
+              <li class="wb-extra">Built centralized <strong>logging + trace correlation</strong> on Node.js <code>async_hooks</code>, reducing MTTR and surfacing perf bottlenecks across services.</li>
+              <li class="wb-extra">Modernized AWS infra with <strong>AWS Organizations</strong>, CI/CD pipelines, <strong>IAM Identity Center RBAC</strong>, and <strong>Tailscale</strong>-secured internal access.</li>
+              <li class="wb-extra">Performed <strong>zero-downtime rotation of JWT signing keys</strong> (<code>kid</code>-based) across all production services, with no forced user logout.</li>
+              <li class="wb-extra">Strengthened account safety with <strong>OTP-abuse prevention</strong> and <strong>multi-device concurrency conflict handling</strong>.</li>
+              <li class="wb-extra">Built an <strong>Aviator</strong> game from scratch, scaling <strong>0 → ~1,000 CCU</strong>; improved velocity using <strong>AI-assisted tooling</strong> and MCP database workflows.</li>
             </ul>
+            <button class="work-more" type="button" id="jumboMore" aria-expanded="false" aria-controls="jumboBullets">
+              <span class="work-more-txt">Show 11 more points</span>
+              <span class="work-more-ico" aria-hidden="true">＋</span>
+            </button>
           </div>
           <div class="work-visual work-visual-jumbo" aria-hidden="true">
             <div class="poster poster-jumbo">
@@ -686,6 +738,6 @@
       <span>Built with vanilla HTML, CSS &amp; JS</span>
     </footer>
 
-    <script src="script.js?v=18" defer></script>
+    <script src="script.js?v=20" defer></script>
   </body>
 </html>

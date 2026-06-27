@@ -33,7 +33,7 @@
   <text x="80" y="270" font-family="Inter, system-ui, -apple-system, sans-serif" font-size="92" font-weight="700" fill="#ffffff" letter-spacing="-2.5">Kaushik R Bangera</text>
 
   <!-- role -->
-  <text x="80" y="332" font-family="ui-monospace, Menlo, monospace" font-size="26" fill="#9aa6b2" letter-spacing="0.5">Senior Backend Engineer · Distributed Systems · Real-Time · AWS</text>
+  <text x="80" y="332" font-family="ui-monospace, Menlo, monospace" font-size="26" fill="#9aa6b2" letter-spacing="0.5">Senior Software Engineer (Founding Engineer) · Distributed · AWS</text>
 
   <!-- stats row -->
   <g transform="translate(80, 410)">
