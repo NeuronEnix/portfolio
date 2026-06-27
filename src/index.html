@@ -27,7 +27,7 @@
     />
     <meta property="og:url" content="https://kaushikrb.com/" />
     <meta property="og:locale" content="en_US" />
-    <meta property="og:image" content="https://kaushikrb.com/og-image.svg" />
+    <meta property="og:image" content="https://kaushikrb.com/asset/img/og-image.svg" />
     <meta property="og:image:type" content="image/svg+xml" />
     <meta property="og:image:width" content="1200" />
     <meta property="og:image:height" content="630" />
@@ -39,7 +39,7 @@
       name="twitter:description"
       content="Building high-scale, real-time backends. ~600K req/min, ₹5 Cr peak payment throughput, founding engineer at Jumbo."
     />
-    <meta name="twitter:image" content="https://kaushikrb.com/og-image.svg" />
+    <meta name="twitter:image" content="https://kaushikrb.com/asset/img/og-image.svg" />
     <meta name="twitter:image:alt" content="Kaushik R Bangera — Senior Backend Engineer" />
 
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
@@ -53,7 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=48" />
+    <link rel="stylesheet" href="styles.css?v=50" />
 
     <script type="application/ld+json">
       {
@@ -62,7 +62,7 @@
         "name": "Kaushik R Bangera",
         "alternateName": "Kaushik",
         "url": "https://kaushikrb.com/",
-        "image": "https://kaushikrb.com/og-image.svg",
+        "image": "https://kaushikrb.com/asset/img/og-image.svg",
         "jobTitle": "Senior Backend Engineer",
         "description": "Senior backend engineer building high-scale, real-time gaming systems and cloud-native infrastructure on AWS.",
         "email": "mailto:kaushikrb909@gmail.com",
@@ -187,7 +187,7 @@
               </a>
             </div>
 
-            <a class="hero-resume" href="/kaushik-r-bangera-resume-2026-06-24.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
+            <a class="hero-resume" href="/asset/resume/kaushik-r-bangera-resume-2026-06-24.pdf" target="_blank" rel="noopener" aria-label="Open resume PDF in new tab">
               <span class="hero-resume-icon" aria-hidden="true">
                 <svg viewBox="0 0 24 24" width="18" height="18">
                   <path d="M12 4 V16 M6 11 L12 17 L18 11 M5 20 H19" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" />
@@ -237,7 +237,7 @@
             <div class="portrait-circle" aria-hidden="true"></div>
             <div class="portrait-frame">
               <div class="portrait-yellow" aria-hidden="true"></div>
-              <img class="portrait-img" src="/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
+              <img class="portrait-img" src="/asset/img/krb2.png" alt="Kaushik R Bangera" width="840" height="1152" />
             </div>
 
             <div class="snapshot-card">
@@ -245,14 +245,14 @@
               <ul class="snapshot-list">
                 <li class="snapshot-row">
                   <a class="snapshot-tile snapshot-co snapshot-co-jumbo" href="https://joinjumbo.com/" target="_blank" rel="noopener" aria-label="Jumbo website">
-                    <img src="/company_jumbo.png" alt="Jumbo" width="325" height="80" decoding="async" />
+                    <img src="/asset/img/company_jumbo.png" alt="Jumbo" width="325" height="80" decoding="async" />
                   </a>
                   <a class="snapshot-title" href="#work-jumbo">Founding Engineer</a>
                   <span class="snapshot-online" aria-label="Currently working here" title="Currently here"></span>
                 </li>
                 <li class="snapshot-row">
                   <a class="snapshot-tile snapshot-co" href="https://www.juegostudio.com/" target="_blank" rel="noopener" aria-label="Juego Studios website">
-                    <img src="/company_juego.png" alt="Juego Studios" width="300" height="137" decoding="async" />
+                    <img src="/asset/img/company_juego.png" alt="Juego Studios" width="300" height="137" decoding="async" />
                   </a>
                   <a class="snapshot-title" href="#work-juego">Software Engineer</a>
                 </li>
@@ -328,7 +328,7 @@
               </svg>
             </div>
             <h3 class="skill-title">Backend</h3>
-            <p class="skill-list">Node.js · gRPC · REST · WebSockets · Microservices · Event-driven · ETL · System design</p>
+            <p class="skill-list">Node.js · gRPC · REST · WebSockets · Microservices · Distributed Systems · Event-driven · CDC · ETL · System design</p>
           </article>
 
           <article class="skill-card">
@@ -361,7 +361,7 @@
               </svg>
             </div>
             <h3 class="skill-title">DevOps &amp; Tools</h3>
-            <p class="skill-list">Docker · Kubernetes · Terraform · NGINX · Airflow · CI/CD · Datadog · Percona · Tailscale · Git</p>
+            <p class="skill-list">Docker · Kubernetes · Terraform · NGINX · Airflow · CI/CD · Datadog · Locust · Percona · Tailscale · Git</p>
           </article>
         </div>
       </div>
@@ -505,24 +505,40 @@
             <ul class="work-bullets">
               <li>Scaled the gaming platform to <strong>~600,000 req/min</strong>, reliably handling <strong>₹5&nbsp;Cr peak payment throughput</strong> and <strong>30&nbsp;Cr+ in-game transaction volume</strong>.</li>
               <li>Rewrote the core transaction service in <strong>Go + gRPC</strong>, dropping latency to single-digit ms; engineered financial correctness via <strong>atomicity, idempotency, running balances</strong>, and integer currency normalization to <strong>eliminate float drift</strong>.</li>
+              <li>Designed a <strong>multi-currency wallet ledger</strong> with <strong>liability tracking</strong> and automated <strong>clawback reconciliation</strong> for accurate, auditable balances across product lines.</li>
               <li>Owned end-to-end system architecture for the in-house fantasy platform — service boundaries, schema, API contracts.</li>
-              <li>Cut backend load by <strong>~50%</strong> by moving low-change / high-read APIs behind a CDN with correct cache-control and invalidation.</li>
+              <li>Built the <strong>fantasy contest engine</strong> — concurrency-safe contest join, automated <strong>reward calculation &amp; distribution</strong>, live leaderboards, and refund / cancellation flows for abandoned or under-filled contests.</li>
+              <li>Built a <strong>vendor-agnostic event pipeline</strong>: one typed event is batched, streamed via <strong>Redis</strong>, and <strong>fanned out to multiple analytics vendors</strong> (CleverTap, PostHog, Matomo) while persisted <strong>first-party in ClickHouse</strong> — removing third-party lock-in and making new-vendor onboarding a config change.</li>
+              <li>Built a <strong>CDC pipeline</strong> using <strong>Postgres logical replication</strong> to stream production data into <strong>BigQuery</strong> in near real time, without loading the primary database.</li>
+              <li>Delivered a scalable <strong>WebSocket platform</strong> (API Gateway + Redis) for connection state, channel broadcasts, and WS-based API calls.</li>
+              <li>Cut backend load and CDN cost by <strong>~40–50%</strong> by moving low-change / high-read APIs behind a CDN with correct cache-control and invalidation.</li>
               <li>Built an async recharge + KYC orchestration layer with a vendor-agnostic Adapter Pattern, reducing third-party cost by <strong>~70%</strong>.</li>
-              <li>Delivered real-time infra: <strong>Redis + ClickHouse event aggregation</strong> and a scalable <strong>WebSocket platform</strong> (API Gateway + Redis) for connection state, channel broadcasts, and WS-based API calls.</li>
               <li>Built centralized <strong>logging + trace correlation</strong> on Node.js <code>async_hooks</code>, reducing MTTR and surfacing perf bottlenecks across services.</li>
+              <li>Rolled out <strong>Datadog</strong> observability (APM, metrics, dashboards, alerting) across all production services, improving incident detection and response.</li>
+              <li>Improved <strong>tail latency</strong> and peak resilience through API + DB bottleneck analysis and <strong>load testing</strong> with Locust and Percona.</li>
+              <li>Reclaimed <strong>~50% of database storage</strong> with <strong>pg_repack</strong> (table rebuilds, reindex, dead-tuple cleanup) and upgraded <strong>PostgreSQL to a new major version</strong>.</li>
+              <li>Scaled database reads with <strong>read replicas, RDS Proxy, and pgBouncer</strong> pooling, and tuned autoscaling to absorb peak traffic without saturating the primary.</li>
               <li>Modernized AWS infra with <strong>AWS Organizations</strong>, CI/CD pipelines, <strong>IAM Identity Center RBAC</strong>, and <strong>Tailscale</strong>-secured internal access.</li>
+              <li>Performed <strong>zero-downtime rotation of JWT signing keys</strong> (<code>kid</code>-based) across all production services, with no forced user logout.</li>
+              <li>Strengthened account safety with <strong>OTP-abuse prevention</strong> and <strong>multi-device concurrency conflict handling</strong>.</li>
               <li><strong>Primary escalation owner</strong> for production incidents — debugging, resolution, release execution, unblocking the team.</li>
               <li>Built an <strong>Aviator</strong> game from scratch and scaled it to <strong>~1,000 CCU</strong>; improved velocity using <strong>AI-assisted tooling</strong> and MCP database workflows.</li>
             </ul>
           </div>
           <div class="work-visual work-visual-jumbo" aria-hidden="true">
             <div class="poster poster-jumbo">
-              <span class="poster-corner">01 / Jumbo</span>
+              <div class="poster-top">
+                <span class="poster-corner">01 / Jumbo</span>
+                <span class="poster-logo"><img src="/asset/img/company_jumbo.png" alt="" /></span>
+              </div>
               <span class="poster-wordmark">JUMBO</span>
-              <div class="poster-stats">
-                <div><strong>~600K</strong><span>req / min</span></div>
-                <div><strong>₹5&nbsp;Cr</strong><span>peak payments</span></div>
-                <div><strong>30&nbsp;Cr+</strong><span>txn volume</span></div>
+              <div class="poster-bottom">
+                <p class="poster-meta">New Delhi <span class="poster-meta-dot">·</span> Aug 2024 — Present</p>
+                <div class="poster-stats">
+                  <div><strong>~600K</strong><span>req / min</span></div>
+                  <div><strong>₹5&nbsp;Cr</strong><span>peak payments</span></div>
+                  <div><strong>30&nbsp;Cr+</strong><span>txn volume</span></div>
+                </div>
               </div>
               <div class="poster-pulse" aria-hidden="true"></div>
             </div>
@@ -533,12 +549,18 @@
         <article id="work-juego" class="work-card work-text-right">
           <div class="work-visual work-visual-juego" aria-hidden="true">
             <div class="poster poster-juego">
-              <span class="poster-corner poster-corner-light">02 / Juego Studios</span>
+              <div class="poster-top">
+                <span class="poster-corner poster-corner-light">02 / Juego Studios</span>
+                <span class="poster-logo"><img src="/asset/img/company_juego.png" alt="" /></span>
+              </div>
               <span class="poster-wordmark">JUEGO</span>
-              <div class="poster-stats poster-stats-light">
-                <div><strong>~66%</strong><span>cost cut</span></div>
-                <div><strong>7s → 1–2s</strong><span>query latency</span></div>
-                <div><strong>1,000 CCU</strong><span>sustained</span></div>
+              <div class="poster-bottom">
+                <p class="poster-meta poster-meta-light">Mangalore <span class="poster-meta-dot">·</span> Aug 2021 — Jan 2024</p>
+                <div class="poster-stats poster-stats-light">
+                  <div><strong>~66%</strong><span>cost cut</span></div>
+                  <div><strong>7s → 1–2s</strong><span>query latency</span></div>
+                  <div><strong>1,000 CCU</strong><span>sustained</span></div>
+                </div>
               </div>
               <div class="poster-grid" aria-hidden="true"></div>
             </div>
@@ -554,11 +576,12 @@
             </p>
             <ul class="work-bullets">
               <li>Built a resilient AWS ingestion platform using <strong>Kinesis</strong>, cutting projected infra cost by <strong>~66%</strong> while improving throughput.</li>
-              <li>Delivered analytics pipelines using <strong>Glue ETL + Glue Catalog + Athena</strong>, cutting query latency from <strong>~7s → 1–2s</strong>.</li>
+              <li>Delivered analytics pipelines using <strong>Glue ETL (PySpark) + Glue Catalog + Athena</strong>, converting raw data to columnar <strong>Parquet</strong> to cut storage and query latency from <strong>~7s → 1–2s</strong>.</li>
               <li>Improved DB scalability via <strong>Aurora MySQL tuning</strong>, SQL transactions, indexing, and <strong>Redis caching</strong> — sustained <strong>~1,000 CCU and 1,000 RPS</strong>.</li>
               <li>Provisioned cloud infra with <strong>Terraform</strong> for reproducible deployments.</li>
               <li>Deployed multiplayer game servers on <strong>Kubernetes</strong>, integrating <strong>Agones</strong> as a PoC for dedicated server scaling.</li>
-              <li>Implemented <strong>M2M auth architecture</strong> and <strong>JWT access/refresh token flows</strong>.</li>
+              <li>Delivered backend game logic across multiple multiplayer titles (<strong>Texas Hold'em Poker</strong>, <strong>Rummy</strong>, and an RPG with a quest / marketplace) — matchmaking and concurrency-safe state.</li>
+              <li>Implemented <strong>M2M auth architecture</strong>, <strong>JWT access/refresh token flows</strong>, and <strong>AWS Cognito + Secrets Manager</strong> with role-based permissions.</li>
               <li>Integrated wallet auth flows with <strong>Metamask</strong> and <strong>Keplr</strong> for Web3 gaming.</li>
               <li>Mentored engineers; collaborated across gameplay, frontend, CMS, and game-design teams.</li>
             </ul>
@@ -571,7 +594,7 @@
                 <li>Built a <strong>Lambda RAM picker</strong> that benchmarks functions across memory configurations to find the most cost-efficient allocation.</li>
                 <li>Replaced <strong>NAT Gateway</strong> with a repurposed <strong>EC2 NAT instance</strong>, cutting egress cost.</li>
                 <li>R&amp;D on <strong>Amazon Personalize</strong> for in-app recommendation use cases.</li>
-                <li>Designed a <strong>room handler with a bucket system</strong> to organize server-side game loops at scale.</li>
+                <li>Designed a <strong>room handler with a bucket system</strong> to organize server-side game loops at scale, with <strong>match-filling bots</strong> to sustain gameplay during low player counts.</li>
                 <li>Established a <strong>caching strategy for master tables</strong> to cut read pressure on the primary DB.</li>
                 <li>Implemented <strong>database synchronization</strong> tooling to keep table structure consistent across environments.</li>
               </ul>

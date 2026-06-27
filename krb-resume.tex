@@ -54,10 +54,10 @@ Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{
 % ---------- TECHNICAL SKILLS ----------
 \section*{TECHNICAL SKILLS}
 \textbf{Languages:} TypeScript, JavaScript, Python, SQL, Go\\
-\textbf{Backend:} Node.js, REST APIs, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, ETL\\
+\textbf{Backend:} Node.js, REST APIs, WebSockets, gRPC, Microservices, Distributed Systems, System Design, Event-driven Systems, CDC (Logical Replication), ETL\\
 \textbf{Databases:} PostgreSQL (RDS/Aurora), MySQL (Aurora), ClickHouse, MongoDB, Redis\\
 \textbf{AWS:} Lambda, EC2, EKS, S3, API Gateway, Kinesis, Firehose, Step Functions, Glue, Athena, SQS, Cognito, CloudWatch, Amazon Personalize\\
-\textbf{DevOps \& Tools:} Docker, Kubernetes, Terraform (IaC), NGINX, Git, Airflow, CI/CD, Percona Monitoring, Tailscale
+\textbf{DevOps \& Tools:} Docker, Kubernetes, Terraform (IaC), NGINX, Git, Airflow, CI/CD, Datadog, Locust, Percona Monitoring, Tailscale
 
 % ---------- EXPERIENCE ----------
 \section*{EXPERIENCE}
@@ -66,17 +66,25 @@ Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{
 \textbf{Aug 2024 -- Present}
 \begin{itemize}
   \item Scaled the gaming platform to \textbf{\textasciitilde{}600,000 requests/min}, reliably handling \textbf{INR 5 Cr peak payment} throughput and \textbf{30 Cr+ in-game transaction} volume.
-  \item Rewrote the \textbf{core transaction service in Go + gRPC}, reducing latency to single-digit ms while ensuring financial correctness through \textbf{atomicity, idempotency, running balances}, and integer-based currency normalization to \textbf{eliminate float drift}; also built reliable \textbf{user-attribute fanout pipelines} for analytics/event platforms using \textbf{TDD and spec-driven development} with AI-assisted validation.
+  \item Rewrote the \textbf{core transaction service in Go + gRPC}, reducing latency to single-digit ms while ensuring financial correctness through \textbf{atomicity, idempotency, running balances}, and integer-based currency normalization to \textbf{eliminate float drift}; built with \textbf{TDD and spec-driven development}.
+  \item Designed a \textbf{multi-currency wallet ledger} with \textbf{liability tracking} and automated \textbf{clawback reconciliation} for accurate, auditable balances across product lines.
+  \item Built a \textbf{vendor-agnostic event pipeline}: services emit a single typed event that is batched, streamed through \textbf{Redis}, and \textbf{fanned out to multiple analytics vendors} (CleverTap, PostHog, OpenPanel, Matomo), with every event also persisted \textbf{first-party in ClickHouse} --- removing third-party lock-in and reducing new-vendor onboarding to a config change.
+  \item Built a \textbf{CDC pipeline} using \textbf{Postgres logical replication} to stream production data into the analytics warehouse (\textbf{BigQuery}) in near real time, without loading the primary database.
   \item Owned the end-to-end \textbf{system architecture} for the in-house fantasy platform, defining \textbf{service boundaries, database schema, and API contracts} for scalable delivery.
-  \item \textbf{Reduced backend load by \textasciitilde{}50\%} by moving low-change/high-read APIs \textbf{behind CDN}, implementing correct \textbf{cache-control} and invalidation strategy.
+  \item Built the \textbf{fantasy contest engine} --- concurrency-safe contest join, automated \textbf{reward calculation \& distribution}, live leaderboards, and refund/cancellation flows for abandoned or under-filled contests.
+  \item \textbf{Reduced backend load and CDN/edge-serving cost by \textasciitilde{}40--50\%} by moving low-change/high-read APIs \textbf{behind a CDN} with correct \textbf{cache-control} headers --- cached at the \textbf{Cloudflare edge} and on-device.
   \item Delivered an async \textbf{recharge + KYC orchestration layer} using a vendor-agnostic \textbf{Adapter Pattern}, reducing third-party dependency cost by \textbf{\textasciitilde{}70\%} through caching and retries.
-  \item Developed real-time infrastructure including \textbf{Redis + ClickHouse event aggregation/distribution} and a scalable \textbf{WebSocket platform (API Gateway + Redis)} for connection state, channel broadcasts, and WebSocket-based API calls.
+  \item Developed a scalable \textbf{WebSocket platform (API Gateway + Redis)} for connection state, channel broadcasts, and WebSocket-based API calls.
   \item Built centralized \textbf{logging + trace correlation} (ClickHouse + Redis) using \textbf{Node.js async\_hooks}, reducing MTTR and surfacing performance bottlenecks across services.
   \item Improved \textbf{tail latency} and peak resilience through \textbf{API + DB bottleneck} analysis and \textbf{load testing} using \textbf{Locust, Percona, and ClickHouse}.
+  \item Rolled out \textbf{Datadog} observability (APM, metrics, dashboards, and alerting) across all production services, improving incident detection and response.
+  \item Reclaimed \textbf{\textasciitilde{}50\% of database storage} using \textbf{pg\_repack} to rebuild bloated tables, reindex, and clear dead tuples, and upgraded \textbf{PostgreSQL to a new major version} --- improving cache efficiency and query performance.
+  \item Scaled database reads using \textbf{read replicas, RDS Proxy, and pgBouncer} connection pooling, and tuned \textbf{autoscaling} to absorb peak traffic without saturating the primary.
   \item Modernized AWS infrastructure and security using \textbf{AWS Organizations, CI/CD pipelines, and IAM Identity Center RBAC}, securing internal access via \textbf{Tailscale} and enforcing least-privilege operations.
   \item Strengthened system integrity with \textbf{OTP abuse prevention} and \textbf{multi-device concurrency conflict handling} for account safety and reliability.
   \item Served as the \textbf{primary escalation owner} for production incidents, leading debugging, \textbf{incident resolution}, and release execution while unblocking the team.
   \item Built an \textbf{Aviator game} from scratch and scaled it to \textbf{\textasciitilde{}1,000 CCU}, improving engagement through stable gameplay loops and production hardening.
+  \item Performed \textbf{zero-downtime rotation} of \textbf{JWT signing keys} (\texttt{kid}-based) across all production services, with \textbf{no forced user logout}.
   \item Improved engineering velocity by using \textbf{AI-assisted tooling} and \textbf{MCP database workflows} for faster debugging, system insights, and architecture validation.
 \end{itemize}
 
@@ -84,11 +92,14 @@ Senior backend engineer with \textbf{4.5+ years} of experience building \textbf{
 \textbf{Aug 2021 -- Jan 2024}
 \begin{itemize}
   \item Built a resilient AWS ingestion platform using \textbf{Kinesis}, reducing projected infrastructure cost by \textbf{\textasciitilde{}66\%} while improving throughput and reliability.
-  \item Delivered end-to-end analytics pipelines using \textbf{AWS Glue ETL + Glue Catalog + Athena}, reducing query latency from \textbf{\textasciitilde{}7s $\rightarrow$ 1--2s} and enabling structured datasets.
+  \item Delivered end-to-end analytics pipelines using \textbf{AWS Glue ETL (PySpark) + Glue Catalog + Athena}, converting raw data to columnar \textbf{Parquet} to cut storage and reduce query latency from \textbf{\textasciitilde{}7s $\rightarrow$ 1--2s}.
+  \item Researched and prototyped a \textbf{recommendation system} using \textbf{Amazon Personalize} for content and game discovery.
   \item Improved database scalability using \textbf{Aurora MySQL tuning}, \textbf{SQL transactions}, indexing, and \textbf{Redis caching}, achieving \textbf{\textasciitilde{}1,000 CCU and 1,000 RPS}.
   \item Provisioned and maintained cloud infrastructure using \textbf{Terraform (IaC)}, enabling reproducible deployments and consistent environments.
   \item Deployed and managed \textbf{multiplayer game} servers on \textbf{Kubernetes}, integrating \textbf{Agones} as a PoC for dedicated server scaling.
-  \item Implemented secure authentication including \textbf{M2M architecture} and JWT \textbf{access/refresh token flows} for service-to-service and client auth.
+  \item Engineered server-side \textbf{game-loop infrastructure} --- a room/bucket system handling idle and timed-out rooms --- with \textbf{match-filling bots} to sustain gameplay during low player counts.
+  \item Implemented secure authentication including \textbf{M2M architecture}, JWT \textbf{access/refresh token flows}, and \textbf{AWS Cognito + Secrets Manager} with role-based permissions.
+  \item Delivered backend game logic across multiple multiplayer titles (\textbf{Texas Hold'em Poker}, \textbf{Rummy}, and an RPG with a quest/marketplace system), including matchmaking and concurrency-safe state.
   \item Built internal cost-optimization tooling including \textbf{Lambda memory benchmarking} and replacing \textbf{NAT Gateway with EC2 NAT}, reducing recurring AWS cost.
   \item Integrated secure wallet authentication flows using \textbf{Metamask} and \textbf{Keplr} for Web3 gaming features.
   \item Mentored engineers and collaborated across gameplay, frontend, CMS, and game design teams.

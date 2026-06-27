@@ -1397,20 +1397,49 @@ code {
 /* Posters */
 .work-visual {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
-  align-self: stretch;
+  align-self: start;
+  position: sticky;
+  top: 88px;
 }
 .poster {
   position: relative;
   width: 100%;
+  max-width: 340px;
   aspect-ratio: 1 / 1;
   border-radius: var(--radius);
   overflow: hidden;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 28px;
+  padding: 24px;
+}
+.poster-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  position: relative;
+  z-index: 2;
+}
+.poster-logo {
+  display: inline-flex;
+  align-items: center;
+  background: #fff;
+  border-radius: 10px;
+  padding: 7px 10px;
+  box-shadow: 0 6px 18px rgba(15, 15, 20, 0.16);
+}
+/* Jumbo logo is white — needs a dark chip to be visible on the yellow poster */
+.poster-jumbo .poster-logo {
+  background: var(--dark);
+  box-shadow: 0 6px 18px rgba(15, 15, 20, 0.28);
+}
+.poster-logo img {
+  display: block;
+  height: 20px;
+  width: auto;
 }
 .poster-jumbo {
   background:
@@ -1436,22 +1465,35 @@ code {
 .poster-wordmark {
   font-family: var(--display);
   font-weight: 800;
-  font-size: clamp(72px, 11vw, 132px);
+  font-size: clamp(48px, 6.4vw, 76px);
   letter-spacing: -0.06em;
   line-height: 0.85;
-  position: absolute;
-  top: 40%;
-  left: 28px;
-  right: 28px;
-  transform: translateY(-50%);
   font-variation-settings: "opsz" 96;
   pointer-events: none;
 }
 .poster-juego .poster-wordmark { color: var(--yellow); }
+.poster-bottom {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  position: relative;
+  z-index: 2;
+}
+.poster-meta {
+  margin: 0;
+  font-family: var(--mono);
+  font-size: 10.5px;
+  font-weight: 600;
+  letter-spacing: 0.13em;
+  text-transform: uppercase;
+  color: rgba(15, 15, 20, 0.85);
+}
+.poster-meta-light { color: rgba(237, 234, 226, 0.78); }
+.poster-meta-dot { opacity: 0.5; margin: 0 3px; }
 .poster-stats {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 12px;
+  gap: 10px;
   position: relative;
   z-index: 2;
 }
@@ -1463,9 +1505,10 @@ code {
 .poster-stats strong {
   font-family: var(--display);
   font-weight: 700;
-  font-size: clamp(18px, 2.2vw, 24px);
-  letter-spacing: -0.025em;
+  font-size: clamp(15px, 1.7vw, 18px);
+  letter-spacing: -0.03em;
   color: inherit;
+  white-space: nowrap;
 }
 .poster-stats span {
   font-family: var(--mono);
@@ -1794,6 +1837,8 @@ code {
   }
   .work-text-right .work-content { order: 1; }
   .work-text-right .work-visual  { order: 0; }
+  .work-visual { position: static; align-self: auto; }
+  .poster { max-width: 420px; margin-inline: auto; }
 
   .contact-grid { grid-template-columns: 1fr; }
   .contact-card { grid-template-columns: 48px 1fr auto; }
