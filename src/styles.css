@@ -725,7 +725,7 @@ a.snap-row:hover { background: rgba(255, 255, 255, 0.03); }
 /* ═══ ABOUT ════════════════════════════════════════════════════════ */
 
 .about-grid { display: grid; grid-template-columns: 1.1fr 1fr; gap: 72px; align-items: start; }
-.about-grid .section-h { margin-bottom: 0; }
+.about-grid .section-h { margin-bottom: 0; position: sticky; top: 96px; align-self: start; }
 .about-body p { margin: 0 0 22px; font-size: 17px; line-height: 1.75; color: var(--text-mid); }
 .about-body p:last-child { margin-bottom: 0; }
 .about-body .lead { font-size: 19px; color: var(--text); font-weight: 500; }
@@ -1055,6 +1055,7 @@ a.snap-row:hover { background: rgba(255, 255, 255, 0.03); }
   .section { padding: 80px 0; }
   :root { --pad: 22px; }
   .about-grid { grid-template-columns: 1fr; gap: 28px; }
+  .about-grid .section-h { position: static; }
   .skill-grid, .section-skills .skill-grid { grid-template-columns: 1fr; }
   .skill-grid > :nth-child(4), .skill-grid > :nth-child(5) { grid-column: 1; }
   .ai-grid { grid-template-columns: 1fr; }
