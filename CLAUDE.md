@@ -25,8 +25,8 @@ There is no build step, no bundler, no test suite, and no linter. HTML/CSS/JS in
 ### Worker (`worker/index.js`)
 A one-line pass-through to `env.ASSETS.fetch(request)`. The Worker exists only because `run_worker_first = true` requires one; it adds no runtime logic.
 
-### Deployment (`.github/workflows/deploy.yml`)
-Pushes to `main` → `wrangler deploy`. Requires `CLOUDFLARE_API_TOKEN` and `CLOUDFLARE_ACCOUNT_ID` repo secrets. `workflow_dispatch` is enabled for manual runs.
+### Deployment (Cloudflare Workers Builds)
+Pushes to `main` are built and deployed automatically by Cloudflare Workers Builds (the `cloudflare-workers-and-pages` GitHub App connected to this repo) — there is no GitHub Actions workflow. Each push gets a "Workers Builds: portfolio" check run on the commit. `npm run deploy` still works for manual deploys from a machine with a wrangler OAuth session.
 
 ## Things to know when editing
 
