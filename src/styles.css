@@ -17,12 +17,6 @@
   --text-dim:   #737B96;
   --text-faint: #4B5270;
 
-  /* legacy ink names (used by some content + blog post pages) */
-  --ink:   #E9ECF6;
-  --ink-2: #AEB4C8;
-  --ink-3: #828AA6;
-  --ink-4: #5A627E;
-
   /* accents */
   --ind:      #6366F1;   /* indigo — primary */
   --ind-2:    #818CF8;   /* indigo light */
@@ -31,24 +25,9 @@
   --green:    #34D399;   /* live / signal */
   --amber:    #FBBF24;
 
-  /* legacy aliases so blog post pages keep working */
-  --yellow:      #6366F1;
-  --yellow-2:    #818CF8;
-  --yellow-soft: rgba(99, 102, 241, 0.13);
-  --blue-soft:   #20243C;
-  --blue:        #B9C2FF;
-  --bg:          #06070F;
-  --bg-soft:     #05060C;
-  --bg-card:     #0D0F1A;
-  --dark:        #04050A;
-  --dark-2:      #0C0E18;
-
   /* lines */
   --line:   rgba(255, 255, 255, 0.08);
   --line-2: rgba(255, 255, 255, 0.14);
-  --rule:      rgba(255, 255, 255, 0.08);
-  --rule-soft: rgba(255, 255, 255, 0.05);
-  --rule-card: rgba(255, 255, 255, 0.12);
 
   /* type */
   --display: "Bricolage Grotesque", "Inter Tight", ui-sans-serif, system-ui, sans-serif;

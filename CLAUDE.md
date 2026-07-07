@@ -4,13 +4,13 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 ## What this is
 
-A static personal portfolio site (`kaushikrb.com`) deployed to Cloudflare Workers. The Worker is a pass-through shim that serves `./src` as static assets via the `ASSETS` binding.
+A static personal portfolio site (`kaushikrb.com`) deployed to Cloudflare Workers. The Worker is a pass-through shim that serves `./src` as static assets via the `ASSETS` binding. Only `src/` is deployed — the resume sources and notes in the repo root never ship.
 
 ## Common commands
 
 ```bash
 npm run dev      # Local dev (wrangler dev)
-npm run deploy   # Deploy to kaushikrb.com
+npm run deploy   # Manual deploy to kaushikrb.com (needs a wrangler OAuth login)
 ```
 
 There is no build step, no bundler, no test suite, and no linter. HTML/CSS/JS in `src/` are shipped as-is.
@@ -23,13 +23,15 @@ There is no build step, no bundler, no test suite, and no linter. HTML/CSS/JS in
 - `not_found_handling = "single-page-application"` — unmatched paths fall back to `index.html`.
 
 ### Worker (`worker/index.js`)
-A one-line pass-through to `env.ASSETS.fetch(request)`. The Worker exists only because `run_worker_first = true` requires one; it adds no runtime logic.
+A one-line pass-through to `env.ASSETS.fetch(request)`. Keep it logic-free.
 
-### Deployment (Cloudflare Workers Builds)
-Pushes to `main` are built and deployed automatically by Cloudflare Workers Builds (the `cloudflare-workers-and-pages` GitHub App connected to this repo) — there is no GitHub Actions workflow. Each push gets a "Workers Builds: portfolio" check run on the commit. `npm run deploy` still works for manual deploys from a machine with a wrangler OAuth session.
+### Deployment
+Pushes to `main` are built and deployed automatically by Cloudflare Workers Builds (the `cloudflare-workers-and-pages` GitHub App); each push gets a "Workers Builds: portfolio" check run on the commit.
 
 ## Things to know when editing
 
-- `src/sitemap.xml`, the `<link rel="canonical">` in `src/index.html`, and the Open Graph / Twitter / JSON-LD URLs are all hardcoded to `https://kaushikrb.com/`. Keep them in sync if the domain ever changes.
-- The site has no JS framework. `src/script.js` is plain DOM-manipulation JS loaded directly from `index.html`.
-- Fonts are loaded from Google Fonts via `<link>` — no self-hosting.
+- Cache busting is manual: `src/index.html` and every page under `src/blog/` load `styles.css?v=N` (and `index.html` loads `script.js?v=N`). When you edit either file, bump `N` in **all** referencing pages and keep it identical across them.
+- Blog posts are standalone HTML files in `src/blog/` that share `/styles.css` (the `.post-*` rules).
+- `src/sitemap.xml`, the `<link rel="canonical">` in `src/index.html`, and the Open Graph / Twitter / JSON-LD URLs are hardcoded to `https://kaushikrb.com/`. Keep them in sync if the domain ever changes.
+- No JS framework — `src/script.js` is plain DOM-manipulation JS loaded from `index.html`.
+- Fonts load from Google Fonts via `<link>`; nothing is self-hosted.
