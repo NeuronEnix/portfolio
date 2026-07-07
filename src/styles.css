@@ -814,6 +814,35 @@ a.snap-row:hover { background: rgba(255, 255, 255, 0.03); }
 .ai-meta-tags { margin-top: 2px; }
 .ai-meta-tags .skill-tag { font-size: 11.5px; padding: 5px 10px; }
 
+/* ═══ PROJECTS ═════════════════════════════════════════════════════ */
+
+.proj-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.proj-card { display: flex; flex-direction: column; }
+.proj-name {
+  font-family: var(--mono);
+  font-weight: 600;
+  font-size: 17px;
+  letter-spacing: -0.01em;
+  margin-bottom: 14px;
+}
+.proj-desc { margin: 0; font-size: 14.5px; line-height: 1.65; color: var(--text-mid); flex-grow: 1; }
+.proj-desc code { font-size: 0.9em; }
+.proj-foot { display: flex; align-items: flex-end; justify-content: space-between; gap: 14px; margin-top: 22px; }
+.proj-tags .skill-tag { font-size: 11.5px; padding: 5px 10px; }
+.proj-gh {
+  display: inline-flex; align-items: center; gap: 7px;
+  flex-shrink: 0;
+  font-family: var(--mono); font-size: 10px; font-weight: 600;
+  letter-spacing: 0.14em; text-transform: uppercase;
+  color: var(--text-dim);
+  background: transparent;
+  border: 1px solid var(--line-2);
+  padding: 7px 12px; border-radius: 7px;
+  transition: color 0.25s var(--ease), background 0.25s var(--ease), border-color 0.25s var(--ease);
+}
+.proj-gh:hover { color: #fff; background: var(--ind); border-color: var(--ind); }
+.proj-gh svg { width: 14px; height: 14px; }
+
 /* ═══ BLOGS ════════════════════════════════════════════════════════ */
 
 .blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
@@ -1059,6 +1088,7 @@ a.snap-row:hover { background: rgba(255, 255, 255, 0.03); }
   .skill-grid, .section-skills .skill-grid { grid-template-columns: 1fr; }
   .skill-grid > :nth-child(4), .skill-grid > :nth-child(5) { grid-column: 1; }
   .ai-grid { grid-template-columns: 1fr; }
+  .proj-grid { grid-template-columns: 1fr; }
   .blog-grid { grid-template-columns: 1fr; }
   .work-card { grid-template-columns: 1fr; gap: 28px; padding: 52px 0; }
   .work-text-right .work-content { order: 1; }

@@ -53,7 +53,7 @@
       href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400;12..96,500;12..96,600;12..96,700;12..96,800&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500;9..40,600;9..40,700&family=JetBrains+Mono:wght@400;500;600;700&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="styles.css?v=57" />
+    <link rel="stylesheet" href="styles.css?v=58" />
 
     <script type="application/ld+json">
       {
@@ -141,9 +141,10 @@
       <a href="#about"><span class="rail-n">01</span><span class="rail-d"></span><span class="rail-l">About</span></a>
       <a href="#skills"><span class="rail-n">02</span><span class="rail-d"></span><span class="rail-l">Skills</span></a>
       <a href="#ai"><span class="rail-n">03</span><span class="rail-d"></span><span class="rail-l">AI</span></a>
-      <a href="#blogs"><span class="rail-n">04</span><span class="rail-d"></span><span class="rail-l">Blogs</span></a>
-      <a href="#work"><span class="rail-n">05</span><span class="rail-d"></span><span class="rail-l">Work</span></a>
-      <a href="#contact"><span class="rail-n">06</span><span class="rail-d"></span><span class="rail-l">Contact</span></a>
+      <a href="#projects"><span class="rail-n">04</span><span class="rail-d"></span><span class="rail-l">Projects</span></a>
+      <a href="#blogs"><span class="rail-n">05</span><span class="rail-d"></span><span class="rail-l">Blogs</span></a>
+      <a href="#work"><span class="rail-n">06</span><span class="rail-d"></span><span class="rail-l">Work</span></a>
+      <a href="#contact"><span class="rail-n">07</span><span class="rail-d"></span><span class="rail-l">Contact</span></a>
     </nav>
 
     <header class="topbar">
@@ -159,6 +160,7 @@
         <a href="#about">about</a>
         <a href="#skills">skills</a>
         <a href="#ai">ai</a>
+        <a href="#projects">projects</a>
         <a href="#blogs">blogs</a>
         <a href="#work">work</a>
         <a class="topbar-cta magnetic" data-mag="0.25" href="#contact">contact</a>
@@ -487,6 +489,75 @@
     </section>
 
     <!-- ────────────────────────────────────────────────────────────
+         Projects
+         ──────────────────────────────────────────────────────────── -->
+    <section id="projects" class="section section-projects">
+      <div class="section-shell">
+        <p class="section-eyebrow"><span class="eyebrow-rule"></span>Projects</p>
+        <h2 class="section-h">Things I build <em>after hours</em>.</h2>
+
+        <div class="proj-grid">
+          <article class="skill-card proj-card">
+            <h3 class="skill-title proj-name">ctx-router</h3>
+            <p class="proj-desc">
+              Transport-agnostic API router — write handlers once and run them across HTTP, Lambda, SQS, and gRPC through one <code>ctx</code> pipeline, keeping transport concerns at the boundaries.
+            </p>
+            <div class="proj-foot">
+              <ul class="skill-tags proj-tags">
+                <li class="skill-tag">TypeScript</li>
+                <li class="skill-tag">npm</li>
+              </ul>
+              <a class="proj-gh" href="https://github.com/NeuronEnix/ctx-router" target="_blank" rel="noopener" aria-label="ctx-router on GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85.004 1.7.115 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="skill-card proj-card">
+            <h3 class="skill-title proj-name">ketsoc</h3>
+            <p class="proj-desc">
+              Geographically distributed WebSocket layer built on Cloudflare Durable Objects, with hibernation for low-cost, stateful connections at the edge.
+            </p>
+            <div class="proj-foot">
+              <ul class="skill-tags proj-tags">
+                <li class="skill-tag">TypeScript</li>
+                <li class="skill-tag">Durable Objects</li>
+              </ul>
+              <a class="proj-gh" href="https://github.com/NeuronEnix/ketsoc" target="_blank" rel="noopener" aria-label="ketsoc on GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85.004 1.7.115 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="skill-card proj-card">
+            <h3 class="skill-title proj-name">homing-trade</h3>
+            <p class="proj-desc">
+              Paper-trading lab for crypto futures — multi-strategy tournament, backtester, RL/AI strategies (Q-learning + a Bull/Bear/Risk committee), daily risk controls and a kill switch.
+            </p>
+            <div class="proj-foot">
+              <ul class="skill-tags proj-tags">
+                <li class="skill-tag">Python</li>
+                <li class="skill-tag">RL / AI</li>
+              </ul>
+              <a class="proj-gh" href="https://github.com/NeuronEnix/homing-trade" target="_blank" rel="noopener" aria-label="homing-trade on GitHub">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill="currentColor" d="M12 2a10 10 0 0 0-3.16 19.49c.5.09.68-.22.68-.48l-.01-1.7c-2.78.6-3.37-1.34-3.37-1.34-.46-1.16-1.11-1.47-1.11-1.47-.91-.62.07-.6.07-.6 1 .07 1.53 1.03 1.53 1.03.89 1.53 2.34 1.09 2.91.83.09-.65.35-1.09.63-1.34-2.22-.25-4.56-1.11-4.56-4.94 0-1.09.39-1.99 1.03-2.69-.1-.25-.45-1.27.1-2.65 0 0 .84-.27 2.75 1.03A9.6 9.6 0 0 1 12 6.84c.85.004 1.7.115 2.5.34 1.91-1.3 2.75-1.03 2.75-1.03.55 1.38.2 2.4.1 2.65.64.7 1.03 1.6 1.03 2.69 0 3.84-2.34 4.69-4.57 4.94.36.31.68.92.68 1.86l-.01 2.75c0 .26.18.58.69.48A10 10 0 0 0 12 2Z" />
+                </svg>
+                <span>GitHub</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ────────────────────────────────────────────────────────────
          Blogs
          ──────────────────────────────────────────────────────────── -->
     <section id="blogs" class="section section-blogs">
@@ -738,6 +809,6 @@
       <span>Built with vanilla HTML, CSS &amp; JS</span>
     </footer>
 
-    <script src="script.js?v=20" defer></script>
+    <script src="script.js?v=21" defer></script>
   </body>
 </html>

@@ -394,10 +394,10 @@
 
   /* ── Reveal on scroll (+ stagger), scramble & count triggers ─────── */
   (() => {
-    const targets = $$(".reveal, .section, .skill-card, .work-card, .contact-card, .edu-card, .blog-card, .ai-card, .module");
+    const targets = $$(".reveal, .section, .skill-card, .work-card, .contact-card, .edu-card, .blog-card, .ai-card, .proj-card, .module");
     targets.forEach((el) => el.classList.add("reveal"));
     // stagger children within grids
-    $$(".skill-grid, .ai-grid, .blog-grid, .contact-grid").forEach((grid) => {
+    $$(".skill-grid, .ai-grid, .proj-grid, .blog-grid, .contact-grid").forEach((grid) => {
       Array.from(grid.children).forEach((c, i) => c.style.setProperty("--rd", `${i * 35}ms`));
     });
 
